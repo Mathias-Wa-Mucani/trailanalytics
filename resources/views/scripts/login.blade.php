@@ -1,3 +1,0 @@
-<script>
-    // alert('login')
-</script>

@@ -51,7 +51,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--begin::Body-->
 
 <body id="kt_body"
-    class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed">
+    class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="overflow-x: hidden">
     <!--begin::Theme mode setup on page load-->
     <script>
         var defaultThemeMode = "light";

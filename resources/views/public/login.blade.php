@@ -3,13 +3,13 @@
     SEGOP|Login
 @endsection
 @section('header')
-    @include('elements.header')
+    {{-- @include('elements.header') --}}
 @endsection
 @section('toolbar')
-    @include('elements.toolbar')
+    {{-- @include('elements.toolbar') --}}
 @endsection
 @section('sidebar')
-    @include('elements.sidebar')
+    {{-- @include('elements.sidebar') --}}
 @endsection
 
 {{-- start main content --}}
@@ -18,11 +18,15 @@
     <!--begin::Page bg image-->
     <style>
         body {
-            background-image: url('{{ asset("public/assets/media/auth/bg4.jpg") }}');
+            background-image: url('{{ asset('public/assets/media/auth/bg4.jpg') }}');
+            background-repeat: no-repeat;
+            /* background-size: contain; */
+            background-position: center;
+
         }
 
         [data-bs-theme="dark"] body {
-            background-image: url('{{ asset("public/assets/media/auth/bg4-dark.jpg") }}');
+            background-image: url('{{ asset('public/assets/media/auth/bg4-dark.jpg') }}');
         }
     </style>
     <!--end::Page bg image-->
@@ -32,12 +36,12 @@
             <!--begin::Aside-->
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
-                <a href="index.html" class="mb-7">
-                    <img alt="Logo" src="{{ asset('public/assets/media/logos/custom-3.svg') }}" />
+                <a href="javascript:;" class="mb-7">
+                    <img alt="Logo" class="img-fluid" src="{{ asset('public/assets/media/logos/logo.jpg') }}" />
                 </a>
                 <!--end::Logo-->
                 <!--begin::Title-->
-                <h2 class="text-white fw-normal m-0">Branding tools designed for your business</h2>
+                <h2 class="text-white fw-normal m-0 mx-auto">SEGOP</h2>
                 <!--end::Title-->
             </div>
             <!--begin::Aside-->
@@ -51,25 +55,26 @@
                 <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
                     <!--begin::Form-->
                     <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="index.html"
-                        action="#">
+                        action="{{route('user-login')}}" method="POST">
                         <!--begin::Heading-->
                         <div class="text-center mb-11">
                             <!--begin::Title-->
                             <h1 class="text-gray-900 fw-bolder mb-3">Sign In</h1>
                             <!--end::Title-->
                             <!--begin::Subtitle-->
-                            <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                            {{-- <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div> --}}
                             <!--end::Subtitle=-->
                         </div>
                         <!--begin::Heading-->
                         <!--begin::Login options-->
-                        <div class="row g-3 mb-9">
+                        <div class="row g-3 mb-9 d-none">
                             <!--begin::Col-->
                             <div class="col-md-6">
                                 <!--begin::Google link=-->
                                 <a href="#"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/google-icon.svg') }}"
+                                    <img alt="Logo"
+                                        src="{{ asset('public/assets/media/svg/brand-logos/google-icon.svg') }}"
                                         class="h-15px me-3" />Sign in with Google</a>
                                 <!--end::Google link=-->
                             </div>
@@ -79,9 +84,11 @@
                                 <!--begin::Google link=-->
                                 <a href="#"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/apple-black.svg') }}"
+                                    <img alt="Logo"
+                                        src="{{ asset('public/assets/media/svg/brand-logos/apple-black.svg') }}"
                                         class="theme-light-show h-15px me-3" />
-                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/apple-black-dark.svg') }}"
+                                    <img alt="Logo"
+                                        src="{{ asset('public/assets/media/svg/brand-logos/apple-black-dark.svg') }}"
                                         class="theme-dark-show h-15px me-3" />Sign in with Apple</a>
                                 <!--end::Google link=-->
                             </div>
@@ -89,21 +96,21 @@
                         </div>
                         <!--end::Login options-->
                         <!--begin::Separator-->
-                        <div class="separator separator-content my-14">
+                        <div class="separator separator-content my-14 d-none">
                             <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
                         </div>
                         <!--end::Separator-->
                         <!--begin::Input group=-->
                         <div class="fv-row mb-8">
                             <!--begin::Email-->
-                            <input type="text" placeholder="Email" name="email" autocomplete="off"
+                            <input type="text" placeholder="Email" name="email" autocomplete="on"
                                 class="form-control bg-transparent" />
                             <!--end::Email-->
                         </div>
                         <!--end::Input group=-->
                         <div class="fv-row mb-3">
                             <!--begin::Password-->
-                            <input type="password" placeholder="Password" name="password" autocomplete="off"
+                            <input type="password" placeholder="Password" name="password" autocomplete="on"
                                 class="form-control bg-transparent" />
                             <!--end::Password-->
                         </div>
@@ -119,7 +126,7 @@
                         <!--end::Wrapper-->
                         <!--begin::Submit button-->
                         <div class="d-grid mb-10">
-                            <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                            <button type="button" id="kt_sign_in_submit" class="btn btn-primary">
                                 <!--begin::Indicator label-->
                                 <span class="indicator-label">Sign In</span>
                                 <!--end::Indicator label-->
@@ -142,7 +149,7 @@
                 <!--begin::Footer-->
                 <div class="d-flex flex-stack px-lg-10">
                     <!--begin::Languages-->
-                    <div class="me-0">
+                    <div class="me-0 d-none">
                         <!--begin::Toggle-->
                         <button class="btn btn-flex btn-link btn-color-gray-700 btn-active-color-primary rotate fs-base"
                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
@@ -161,7 +168,8 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="English">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="{{ asset('public/assets/media/flags/united-states.svg') }}" alt="" />
+                                            src="{{ asset('public/assets/media/flags/united-states.svg') }}"
+                                            alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">English</span>
                                 </a>
@@ -216,10 +224,11 @@
                     </div>
                     <!--end::Languages-->
                     <!--begin::Links-->
-                    <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                        <a href="pages/team.html" target="_blank">Terms</a>
+                    <div class="d-flex fw-semibold text-primary fs-base gap-5 d-none">
+                        @include('elements/footer')
+                        {{-- <a href="pages/team.html" target="_blank">Terms</a>
                         <a href="pages/pricing/column.html" target="_blank">Plans</a>
-                        <a href="pages/contact.html" target="_blank">Contact Us</a>
+                        <a href="pages/contact.html" target="_blank">Contact Us</a> --}}
                     </div>
                     <!--end::Links-->
                 </div>
@@ -232,7 +241,7 @@
 @endsection
 {{-- end main content --}}
 @section('custom-js')
-    @include('scripts.login')
+    @include('scripts.public.login')
     <script>
         // alert('hello custom');
     </script>
