@@ -3,13 +3,13 @@
     SEGOP|Login
 @endsection
 @section('header')
-    {{-- @include('elements.header') --}}
+    @include('elements.header')
 @endsection
 @section('toolbar')
-    {{-- @include('elements.toolbar') --}}
+    @include('elements.toolbar')
 @endsection
 @section('sidebar')
-    {{-- @include('elements.sidebar') --}}
+    @include('elements.sidebar')
 @endsection
 
 {{-- start main content --}}
@@ -33,7 +33,7 @@
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
                 <a href="index.html" class="mb-7">
-                    <img alt="Logo" src="assets/media/logos/custom-3.svg" />
+                    <img alt="Logo" src="{{ asset('public/assets/media/logos/custom-3.svg') }}" />
                 </a>
                 <!--end::Logo-->
                 <!--begin::Title-->
@@ -69,7 +69,7 @@
                                 <!--begin::Google link=-->
                                 <a href="#"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                    <img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg"
+                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/google-icon.svg') }}"
                                         class="h-15px me-3" />Sign in with Google</a>
                                 <!--end::Google link=-->
                             </div>
@@ -79,9 +79,9 @@
                                 <!--begin::Google link=-->
                                 <a href="#"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
-                                    <img alt="Logo" src="assets/media/svg/brand-logos/apple-black.svg"
+                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/apple-black.svg') }}"
                                         class="theme-light-show h-15px me-3" />
-                                    <img alt="Logo" src="assets/media/svg/brand-logos/apple-black-dark.svg"
+                                    <img alt="Logo" src="{{ asset('public/assets/media/svg/brand-logos/apple-black-dark.svg') }}"
                                         class="theme-dark-show h-15px me-3" />Sign in with Apple</a>
                                 <!--end::Google link=-->
                             </div>
@@ -148,7 +148,7 @@
                             data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                             data-kt-menu-offset="0px, 0px">
                             <img data-kt-element="current-lang-flag" class="w-20px h-20px rounded me-3"
-                                src="assets/media/flags/united-states.svg" alt="" />
+                                src="{{ asset('public/assets/media/flags/united-states.svg') }}" alt="" />
                             <span data-kt-element="current-lang-name" class="me-1">English</span>
                             <i class="ki-outline ki-down fs-5 text-muted rotate-180 m-0"></i>
                         </button>
@@ -161,7 +161,7 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="English">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="assets/media/flags/united-states.svg" alt="" />
+                                            src="{{ asset('public/assets/media/flags/united-states.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">English</span>
                                 </a>
@@ -172,7 +172,7 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="Spanish">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="assets/media/flags/spain.svg" alt="" />
+                                            src="{{ asset('public/assets/media/flags/spain.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">Spanish</span>
                                 </a>
@@ -183,7 +183,7 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="German">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="assets/media/flags/germany.svg" alt="" />
+                                            src="{{ asset('public/assets/media/flags/germany.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">German</span>
                                 </a>
@@ -194,7 +194,7 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="Japanese">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="assets/media/flags/japan.svg" alt="" />
+                                            src="{{ asset('public/assets/media/flags/japan.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">Japanese</span>
                                 </a>
@@ -205,7 +205,7 @@
                                 <a href="#" class="menu-link d-flex px-5" data-kt-lang="French">
                                     <span class="symbol symbol-20px me-4">
                                         <img data-kt-element="lang-flag" class="rounded-1"
-                                            src="assets/media/flags/france.svg" alt="" />
+                                            src="{{ asset('public/assets/media/flags/france.svg') }}" alt="" />
                                     </span>
                                     <span data-kt-element="lang-name">French</span>
                                 </a>
@@ -232,7 +232,7 @@
 @endsection
 {{-- end main content --}}
 @section('custom-js')
-    {{-- @include('scripts.login') --}}
+    @include('scripts.login')
     <script>
         // alert('hello custom');
     </script>
