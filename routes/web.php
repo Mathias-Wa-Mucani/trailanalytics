@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 // Auth::routes();
 Route::get('/', function () {
-    return view('public.login');
+    return view('auth.login');
 });
 
-Route::post('my-login', [Home::class, 'login'])->name('login');
+// Route::get('user-login', [Home::class, 'login'])->name('login');
 
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

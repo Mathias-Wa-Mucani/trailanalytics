@@ -43,40 +43,44 @@
                 }; /*(submitButton.closest("form").getAttribute("action")) ?*/
                 submitButton.addEventListener("click", function(e) {
                     // function(i) {
-                        console.log(new FormData(submitForm));
+                    console.log(new FormData(submitForm));
 
-                        // i.preventDefault(), 
-                        validateForm.validate().then((function(validateForm) {
-                            "Valid" == validateForm ? (submitButton.setAttribute(
-                                    "data-kt-indicator", "on"), submitButton
-                                .disabled = !0, setTimeout((function() {
-                                    submitButton.removeAttribute(
-                                            "data-kt-indicator"),
-                                        submitButton
-                                        .disabled = !1, axios.post(submitButton
-                                            .closest("form")
-                                            .getAttribute("action"),
-                                            new FormData(submitForm))
-                                        .then((
-                                            function(e) {
-                                                if (e) {
-                                                    submitForm.reset(), Swal
-                                                        .fire({
-                                                            text: "You have successfully logged in!",
-                                                            icon: "success",
-                                                            buttonsStyling:
-                                                                !1,
-                                                            confirmButtonText: "Ok, got it!",
-                                                            customClass: {
-                                                                confirmButton: "btn btn-primary"
-                                                            }
-                                                        });
-                                                    const e = submitForm
-                                                        .getAttribute(
-                                                            "data-kt-redirect-url"
-                                                        );
-                                                    e && (location.href = e)
-                                                } else Swal.fire({
+                    // i.preventDefault(), 
+                    validateForm.validate().then((function(validateForm) {
+                        "Valid" == validateForm ? (submitButton.setAttribute(
+                                "data-kt-indicator", "on"), submitButton
+                            .disabled = !0, setTimeout((function() {
+                                submitButton.removeAttribute(
+                                        "data-kt-indicator"),
+                                    submitButton
+                                    .disabled = !1, axios.post(submitButton
+                                        .closest("form")
+                                        .getAttribute("action"),
+                                        new FormData(submitForm))
+                                    .then((
+                                        function(response) {
+                                            if (response) {
+                                                submitForm.reset(), Swal
+                                                    .fire({
+                                                        text: "You have successfully logged in!",
+                                                        icon: "success",
+                                                        buttonsStyling:
+                                                            !1,
+                                                        confirmButtonText: "Ok, got it!",
+                                                        customClass: {
+                                                            confirmButton: "btn btn-primary"
+                                                        }
+                                                    });
+                                                const redirectUrl =
+                                                    submitForm
+                                                    .getAttribute(
+                                                        "data-kt-redirect-url"
+                                                    );
+                                                redirectUrl && (location
+                                                    .href = redirectUrl)
+                                            } else
+
+                                                Swal.fire({
                                                     text: "Sorry, the email or password is incorrect, please try again.",
                                                     icon: "error",
                                                     buttonsStyling:
@@ -86,46 +90,54 @@
                                                         confirmButton: "btn btn-primary"
                                                     }
                                                 })
-                                            })).catch((function(t) {
-                                            Swal.fire({
-                                                text: "Sorry, looks like there are some errors detected, please try again.",
-                                                icon: "error",
-                                                buttonsStyling:
-                                                    !1,
-                                                confirmButtonText: "Ok, got it!",
-                                                customClass: {
-                                                    confirmButton: "btn btn-primary"
-                                                }
-                                            })
-                                        })).then((function(submitButton) {
-                                            if (submitButton
-                                                .isConfirmed) {
-                                                submitForm
-                                                    .querySelector(
-                                                        '[name="email"]'
-                                                    ).value = "",
-                                                    submitForm
-                                                    .querySelector(
-                                                        '[name="password"]'
-                                                    ).value = "";
-                                                var r = submitForm
-                                                    .getAttribute(
-                                                        "data-kt-redirect-url"
-                                                    );
-                                                r && (location.href = r)
+                                        })).catch((function(exception) {
+                                        console.log(exception.response.data.errors.email[0])
+                                        // console.log(exception.response.data.errors.email[0])
+                                        // var names = exception.response.data.errors.map(function(
+                                        //     item) {
+                                        //     return item['email'];
+                                        // });
+                                        // console.log(names)
+
+                                        Swal.fire({
+                                            // text: "Sorry, looks like there are some errors detected, please try again.",
+                                            text: exception.response.data.errors.email[0],
+                                            icon: "error",
+                                            buttonsStyling:
+                                                !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: {
+                                                confirmButton: "btn btn-primary"
                                             }
-                                        }))
-                                }), 2e3)) : Swal.fire({
-                                title: "Error",
-                                text: "Sorry, some errors detected, please read the error messages below each field!!",
-                                icon: "error",
-                                buttonsStyling: !1,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            })
-                        }))
+                                        })
+                                    })).then((function(e) {
+                                        if (submitButton.isConfirmed) {
+                                            submitForm
+                                                .querySelector(
+                                                    '[name="email"]'
+                                                ).value = "",
+                                                submitForm
+                                                .querySelector(
+                                                    '[name="password"]'
+                                                ).value = "";
+                                            var r = submitForm
+                                                .getAttribute(
+                                                    "data-kt-redirect-url"
+                                                );
+                                            r && (location.href = r)
+                                        }
+                                    }))
+                            }), 2000)) : Swal.fire({
+                            title: "Error",
+                            text: "Sorry, some errors detected, please read the error messages below each field!!",
+                            icon: "error",
+                            buttonsStyling: !1,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        })
+                    }))
                     // }
                 });
 
