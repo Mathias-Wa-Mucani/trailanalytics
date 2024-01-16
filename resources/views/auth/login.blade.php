@@ -57,7 +57,7 @@
                     {{-- <div class="card-header">{{ __('Login') }}</div> --}}
 
                     <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form"
-                        data-kt-redirect-url="{{ route('home') }}" action="{{ route('login') }}" method="POST">
+                        data-kt-redirect-url="{{ route('dashboard')}}" action="{{ route('login') }}" method="POST">
                         @csrf
                         <!--begin::Heading-->
                         <div class="text-center mb-11">

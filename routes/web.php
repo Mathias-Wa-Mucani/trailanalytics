@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Home;
+use App\Http\Controllers\DashboardController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Auth::routes();
 Route::get('/', function () {
-    // return     "Connected sucessfully to database ".DB::connection('db_dmis')->getDatabaseName().".";
+    // return     "Connected sucessfully to database ".DB::connection('db_dmis')->getDatabaseName().url('/');
     return view('auth.login');
 });
 
-// Route::get('user-login', [Home::class, 'login'])->name('login');
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+

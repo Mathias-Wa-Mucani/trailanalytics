@@ -4119,7 +4119,16 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+                            {{-- <a href="authentication/layouts/corporate/sign-in.html" class="">Sign Out</a> --}}
+                            <a class="menu-link px-5 text-danger" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('Sign Out') }}
+                         </a>
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                         </form>
                         </div>
                         <!--end::Menu item-->
                     </div>

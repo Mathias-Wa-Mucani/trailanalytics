@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Response;
 
-class Home extends Controller
+class DashboardController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class Home extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function index(Request $request){
 
         return  Response::json(['res'=>'hello world']);
     }
