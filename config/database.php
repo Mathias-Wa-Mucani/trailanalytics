@@ -78,6 +78,22 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'db_dmis' => [
+            'driver' => 'pgsql',
+            'url' => env('DMIS_DATABASE_URL'),
+            'host' => env('DMIS_DB_HOST', '127.0.0.1'),
+            'port' => env('DMIS_DB_PORT', '5432'),
+            'database' => env('DMIS_DB_DATABASE', 'forge'),
+            'username' => env('DMIS_DB_USERNAME', 'forge'),
+            'password' => env('DMIS_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),

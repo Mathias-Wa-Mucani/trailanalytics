@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    protected $connection = 'db_dmis';
+    protected $table = "stp_user";
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

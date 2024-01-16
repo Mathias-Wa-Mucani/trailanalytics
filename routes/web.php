@@ -3,6 +3,7 @@ use App\Http\Controllers\Home;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Auth::routes();
 Route::get('/', function () {
+    // return     "Connected sucessfully to database ".DB::connection('db_dmis')->getDatabaseName().".";
     return view('auth.login');
 });
 
