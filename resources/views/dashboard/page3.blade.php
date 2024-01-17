@@ -16,10 +16,10 @@
 @section('content')
     {{-- <p>This is my body content.</p> --}}
     
-    <h1>Dashboard Here....</h1>
+    <h1>Page3 Here....</h1>
 @endsection
 {{-- end main content --}}
 @section('custom-js')
     {{-- @include('scripts.dashboard.main') --}}
-    
+    >
 @endsection

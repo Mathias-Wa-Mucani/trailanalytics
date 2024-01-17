@@ -1,9 +1,12 @@
 <?php
+
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Page3Controller;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 
 
@@ -17,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     // return     "Connected sucessfully to database ".DB::connection('db_dmis')->getDatabaseName().url('/');
     return view('auth.login');
@@ -33,7 +37,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     // Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('role:' . RolePermission::ROLE_SYSTEM_ADMINISTRATOR);
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
 
+        $submenus = DB::table('setup_menu_submenu')/*->where('id IN (SELECT submenu_id FROM view_user_roles_details WHERE id =  "' . $user[0]->role_id . '")')*/->where('flag', true)->orderBy('orders', 'ASC')->get();
 
+        foreach ($submenus as $submenu) {
+            if ($submenu->route != "") {
+                Route::get($submenu->route, [strtok($submenu->url , '/') . '::class' .explode('/', $submenu->url  )[1], $submenu->route])->name($submenu->route);
+
+            }
+        }
+        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
+
+        
     });
 });
