@@ -15,7 +15,7 @@
 {{-- start main content --}}
 @section('content')
     {{-- <p>This is my body content.</p> --}}
-    
+    Logged in user {{Auth::check()}}
     <h1>Dashboard Here....</h1>
 @endsection
 {{-- end main content --}}

@@ -27,5 +27,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    // Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('role:' . RolePermission::ROLE_SYSTEM_ADMINISTRATOR);
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    });
+});
