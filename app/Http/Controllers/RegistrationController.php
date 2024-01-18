@@ -36,7 +36,7 @@ class RegistrationController extends Controller
         $data['financialYrs']   = DB::connection('db_dmis')->table('stp_financial_year')->get();
         $data['quarters']   = DB::connection('db_dmis')->table('stp_quarter')->get();
         $data['personTypes']   = DB::table('stp_person_type')->get();
-        $data['districts']   = DB::table('stp_dmis_adm_b_district')->get();
+        $data['districts']   = DB::table('stp_admin_unit_a_district')->get();
         // return '<pre>'.json_encode($data['dashboardIndicators']->getdata(), JSON_PRETTY_PRINT);//->access->bgcolor;
         // return $data;
         return $this->view('dashboard.registration.save-old-persons', $data);
