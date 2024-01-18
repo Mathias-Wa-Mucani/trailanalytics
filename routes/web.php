@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Page3Controller;
+use App\Http\Controllers\RegistrationController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,18 +36,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('role:' . RolePermission::ROLE_SYSTEM_ADMINISTRATOR);
     Route::group(['prefix' => 'dashboard'], function () {
-        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
 
         $submenus = DB::table('setup_menu_submenu')/*->where('id IN (SELECT submenu_id FROM view_user_roles_details WHERE id =  "' . $user[0]->role_id . '")')*/->where('flag', true)->orderBy('orders', 'ASC')->get();
 
         foreach ($submenus as $submenu) {
             if ($submenu->route != "") {
-                Route::get($submenu->route, [strtok($submenu->url , '/') . '::class' .explode('/', $submenu->url  )[1], $submenu->route])->name($submenu->route);
+                // Route::get($submenu->route, [strtok($submenu->url , '/') . '::class' .explode('/', $submenu->url  )[1], $submenu->route])->name($submenu->route);
 
             }
         }
-        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
+        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('op-registration', [RegistrationController::class, 'opregistration'])->name('op-registration');
+        Route::get('old-persons-form', [RegistrationController::class, 'oldPersonsForm'])->name('old-persons-form');
 
         
     });

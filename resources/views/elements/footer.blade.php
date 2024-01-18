@@ -1338,6 +1338,101 @@
 <script src="{{ asset('public/assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('public/assets/js/scripts.bundle.js') }}"></script>
 <!--end::Global Javascript Bundle-->
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/fh-3.2.4/datatables.min.js"></script>
+<script srcx="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    // validate form
+    function validateForm() {
+        var isValid = true;
+        $('.required').each(function() {
+            // console.log($(this));
+            if ($(this).val() === '') {
+                $(this).attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
+                isValid = false;
+            } else if ($(this).val() != '') {
+                $(this).attr('style', "border-radius: 5px; border:	#008000 1px solid;");
+            }
+        });
+        $('.Editor-editor').each(function() {
+            // console.log($(this));
+            if ($(this).text() === '') {
+                $(this).attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
+                isValid = false;
+            } else if ($(this).text() != '') {
+                $(this).attr('style', "border-radius: 5px; border:	#008000 1px solid;");
+            }
+        });
+        return isValid;
+    }
+
+
+    //  Dropzone.autoDiscover = false;
+
+    $(document).ready(function() {
+        // $('.select2').select2();
+        //  alert('footer');
+
+        // $("input[type='search']").wrap("<form>");
+        // $("input[type='search']").closest("form").attr("autocomplete", "off");
+        // console.log($("input[type='search']").val());
+        // $("input[type='search']").val('Mathias');
+
+    });
+    "use strict";
+    $(function() {
+        $('#myTable').DataTable({
+            order: [
+                // [9, 'asc']
+            ],
+        });
+    });
+
+
+
+    $(window).on('beforeunload', function(event) {
+        // alert('befor')
+        $("#loading").fadeIn("slow");
+        event.stopImmediatePropagation();
+    });
+    $(window).on('load', function() {
+        // alert('after')
+
+        $("#loading").fadeOut("slow");
+    });
+    // ---------------------------------------------------------
+
+    $(document).ready(function() {
+        var url = window.location.href;
+        if (url.substr(-1) === '/') {
+            url = url.substr(0, url.length - 1);
+        }
+        console.log('ur' + url);
+        $('#navbarsExample03 li a').each(function() {
+            var $this = $(this);
+            console.log('----' + this.href.replace(/\/$/, ''));
+            // if the current url is like this link, make it active
+            if (this.href.replace(/\/$/, '') === url) {
+                $this.addClass('active');
+            }
+            // else if (this.href === 'http://localhost:8080/water_atlas/public') {
+            //     $this.addClass('active');
+            // }
+        })
+
+        // for sidebar menus
+        $('.menu-item ').each(function() {
+            var $this = $(this).find('a')[0];
+            // console.log($(this));
+            // console.log('----sidebar' + $this.href.replace(/\/$/, ''));
+            // if the current url is like this link, make it active
+            // if ($this.href.replace(/\/$/, '') === url) {
+            //     $(this).addClass('menu-item-active');
+            // }
+            
+        })
+    });
+</script>
 
 <!--begin::Custom Javascript(used for this page only)-->
 @yield('custom-js')
