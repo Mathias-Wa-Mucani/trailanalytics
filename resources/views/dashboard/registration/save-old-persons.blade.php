@@ -260,7 +260,7 @@
                                             class="form-select form-select-sm ">
                                             <option value="">--Select District--</option>
                                             @foreach ($districts as $district)
-                                                <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                                <option value="{{ $district->id }}">{{ $district->district }}</option>
                                             @endforeach
                                         </select>
                                         <!--end::district-->
