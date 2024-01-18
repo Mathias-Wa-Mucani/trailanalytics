@@ -397,7 +397,7 @@
                     </div>
 
                     <div class="card-footer d-flex justify-content-center">
-                        <a href="" class="btn btn-danger mr-auto">Cancel</a>
+                        <a href="{{route('op-registration')}}" class="btn btn-danger mr-auto">Cancel</a>
                         <button type="button" id="btnSubmitPlantAppnDraft" onclickx="return saveApplication();"
                             class="btn btn-warning mx-auto btnSubmitPlantAppnDraft">Save Draft</button>
                         <button type="button" id="btnSubmitPlantAppnFinal"
