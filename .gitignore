@@ -8,6 +8,7 @@ node_modules/
 dist/
 # vendor/
 .env
+todo/
 
 # Compiled Java class files
 *.class
