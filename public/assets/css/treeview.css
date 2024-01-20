@@ -1,0 +1,140 @@
+.tree, .tree ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.tree ul {
+    margin-left: 1em;
+    position: relative
+}
+
+.tree ul ul {
+    margin-left: .5em
+}
+
+.tree ul:before {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid
+}
+
+.tree li {
+    margin: 0;
+    /* padding: 0 1em; */
+    padding: 0 0 0 1em;
+    /* line-height: 2em; */
+    line-height: 1.8em;
+    color: #369;
+    font-weight: 700;
+    position: relative;
+    font-size: 13px;
+}
+
+.tree ul li {
+    font-weight:lighter;
+}
+
+
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    color: #369;
+    border: none;
+    background: transparent;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    outline: 0;
+}
+
+.tree li, .tree ul li, .tree ul ul li {
+    border-bottom: dotted thin #ccc;
+}
+
+.tree ul li:last-child {
+    border-bottom: none;
+}
+
+.tree ul li:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid;
+    margin-top: -1px;
+    position: absolute;
+    top: 1em;
+    left: 0
+}
+
+.tree ul li:last-child:before {
+    background: #fff;
+    height: auto;
+    top: 1em;
+    bottom: 0
+}
+
+.indicator {
+    margin-right: 5px;
+}
+
+.tree li div.branch {
+    text-decoration: none;
+    /* color: #369; */
+    color: #6d6d6d;
+    width: 100%;
+    display: inline-block;
+    padding: 0px 6px;
+}
+
+.tree li a {
+    text-decoration: none;
+    /* color: #369; */
+    color: #6d6d6d;
+    width: 100%;
+    display: inline-block;
+    padding: 0px 6px;
+}
+
+.tree li a:hover {
+    background-color: #f3f1f1;
+}
+
+.tree li div.branch:hover {
+    background-color: #f3f1f1;
+}
+
+.tree li a:hover>.category-actions {
+    display: inline-block;
+}
+
+.tree li div.branch:hover>.category-actions {
+    display: inline-block;
+}
+
+.tree .category-actions {
+    /* display: none; */
+}
+
+.tree .category-actions::before {
+    content: unset;
+}
+
+.tree .category-actions span {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.tree .category-actions a {
+    display: unset;
+}
+
+.tree .category-actions a i {
+    font-size: 12px;
+    color: #919191;
+}
+

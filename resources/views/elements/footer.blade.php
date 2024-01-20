@@ -1337,10 +1337,48 @@
 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 <script src="{{ asset('public/assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('public/assets/js/scripts.bundle.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('public/assets/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('public/assets/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/tinymce/jquery.tinymce.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.maskedinput.js') }}"></script>
+<script src="{{ asset('public/assets/js/axios.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/select2.min.js') }}"></script>
+<!-- <script src="{{ asset('flatpickr/flatpickr.bundle.js') }}"></script> -->
+<script src="{{ asset('public/assets/js/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/bootstrap-datepicker.min.js') }}"></script>
 <!--end::Global Javascript Bundle-->
 
 <!--begin::Custom Javascript(used for this page only)-->
 @yield('custom-js')
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
+
+
+<script src="{{ asset('public/assets/js/form_validate.js') }}"></script>
+<script src="{{ asset('public/assets/js/forms_custom.js') }}"></script>
+
+@includeIf('partials.modals.dynamic_modals')
+
+    <script>
+        var MAX_FILE_UPLOAD_SIZE_MBS = "{{ MAX_FILE_UPLOAD_SIZE_MBS }}";
+        var Preloader =
+            `<div class="text-center mt-40" style="font-size:13px"> <img src="{{ asset('img/ajax-loader-report.gif') }}" /> Please wait... </div>`;
+
+        var PreloaderMini =
+            `<div class="text-center mt-40" style="font-size:13px"> <img src="{{ asset('img/ajax-loader-report.gif') }}" style="width:50px" /> Please wait... </div>`;
+
+        var ModalPreloader =
+            `<div class="text-center mt-40" style="font-size:14px; color: #ff7513;"> <img src="{{ asset('img/ajax-loader-report.gif') }}" style="width:21px" /> Please wait... </div>`;
+        var GLOBAL_ACTION_ANCHOR = $('#global_action_anchor');
+        var swalBuzyBackground = "rgb(113 176 230 / 40%)";
+    </script>
+
+
+    @includeIf('elements.blade_scripts.js_functions')
+    @includeIf('elements.blade_scripts.js_master')
+    @includeIf('elements.blade_scripts.js_load_modal')
+    @includeIf('elements.blade_scripts.js_module_reports')
+    @stack('scripts')
 

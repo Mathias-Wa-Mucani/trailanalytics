@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MainMenu;
+use App\Models\SubMenu;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,16 +25,19 @@ class Controller extends BaseController
         if (Auth::check()) {
             $position_id = Auth::user()->position_id;
             // $data['mainmenus'] = DB::table('setup_menu_main')->where('id IN (SELECT menu_id FROM view_user_roles_details WHERE id =  "' . Auth::user()->position_id . '")')->where('flag', true)->orderBy('orders', 'ASC')->get();
-            $data['mainmenus'] = DB::select(
-                "
-                SELECT * FROM setup_menu_main WHERE id IN (SELECT menu_id FROM view_user_roles_details WHERE id = ". $position_id . ") AND flag = TRUE ORDER BY orders ASC 
-                "
-            );
-            $data['submenus'] = DB::select(
-                "
-                SELECT * FROM setup_menu_submenu WHERE id IN (SELECT submenu_id FROM view_user_roles_details WHERE id = ". $position_id . ") AND flag = TRUE ORDER BY orders ASC 
-                "
-            );
+            // $data['mainmenus'] = DB::select(
+            //     "
+            //     SELECT * FROM setup_menu_main WHERE id IN (SELECT menu_id FROM view_user_roles_details WHERE id = ". $position_id . ") AND flag = TRUE ORDER BY orders ASC 
+            //     "
+            // );
+            // $data['submenus'] = DB::select(
+            //     "
+            //     SELECT * FROM setup_menu_submenu WHERE id IN (SELECT submenu_id FROM view_user_roles_details WHERE id = ". $position_id . ") AND flag = TRUE ORDER BY orders ASC 
+            //     "
+            // );
+            
+            $data['mainmenus'] = MainMenu::all();
+            $data['submenus'] = SubMenu::all();
         }
 
 

@@ -47,6 +47,15 @@ License: For each use you must have a valid license purchased only from above li
     <!--end::Global Stylesheets Bundle-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet"/>
+
+    {{-- <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet"> --}}
+	<link class="js-stylesheet" href="{{ asset('public/assets/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/css/select2.min.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/css/treeview.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/css/sweetalert2.min.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/flatpickr/flatpickr.bundle.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet">
     
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
