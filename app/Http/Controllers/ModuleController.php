@@ -198,11 +198,29 @@ class ModuleController extends Controller
         $appModelSystem = "\\App\\Models\\" . $model;
 
         $results = $appModelSystem::where($filterField, $filterFieldID)->get();
+        // dd($results);
         $html = '';
         $html .= '<option data-value="default"></option>';
-        foreach ($results as $result) {
-            $html .= '<option value=' . $result->id . '>' . $result->name . '</option>';
+
+        if ($model == 'County') {
+            foreach ($results as $result) {
+                $html .= '<option value=' . $result->ccode . '>' . @$result->county . '</option>';
+            }
+        } elseif ($model == 'Subcounty') {
+            foreach ($results as $result) {
+                $html .= '<option value=' . $result->scode . '>' . @$result->subcounty . '</option>';
+            }
+        } elseif ($model == 'Parish') {
+            foreach ($results as $result) {
+                $html .= '<option value=' . $result->pcode . '>' . @$result->parish . '</option>';
+            }
+        } elseif ($model == 'Village') {
+            foreach ($results as $result) {
+                $html .= '<option value=' . $result->vcode . '>' . @$result->village . '</option>';
+            }
         }
+
+
         return $html;
     }
 }

@@ -2,15 +2,6 @@
 @section('title')
     SEGOP|Login
 @endsection
-@section('header')
-    {{-- @include('elements.header') --}}
-@endsection
-@section('toolbar')
-    {{-- @include('elements.toolbar') --}}
-@endsection
-@section('sidebar')
-    {{-- @include('elements.sidebar') --}}
-@endsection
 
 {{-- start main content --}}
 @section('content')

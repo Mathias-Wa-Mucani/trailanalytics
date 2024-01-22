@@ -1,5 +1,5 @@
 <script>
-    var reportPreloader = `<div class="text-center mt-40" style="font-size:13px"> <img src="{{asset('ajax-loader-report.gif')}}" /> Generating report! Please wait... </div>`;
+    var reportPreloader = `<div class="text-center mt-40" style="font-size:13px"> <img src="{{asset('public/assets/img/ajax-loader-report.gif')}}" /> Generating report! Please wait... </div>`;
     $('body').on('click', '.btnReport', async function(event) {
         event.preventDefault();
         var frm = $(this).parents('form');

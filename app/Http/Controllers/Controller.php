@@ -21,7 +21,7 @@ class Controller extends BaseController
     {
         $page = \str_replace('.', '/', $page);
 
-        $data = [];
+        // $data = [];
         if (Auth::check()) {
             $position_id = Auth::user()->position_id;
             // $data['mainmenus'] = DB::table('setup_menu_main')->where('id IN (SELECT menu_id FROM view_user_roles_details WHERE id =  "' . Auth::user()->position_id . '")')->where('flag', true)->orderBy('orders', 'ASC')->get();
@@ -36,12 +36,10 @@ class Controller extends BaseController
             //     "
             // );
             
-            $data['mainmenus'] = MainMenu::all();
-            $data['submenus'] = SubMenu::all();
+            
         }
 
 
         return view($page, $data);
-        // echo view('templates/footer', $data);
     }
 }

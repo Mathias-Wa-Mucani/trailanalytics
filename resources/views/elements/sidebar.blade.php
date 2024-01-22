@@ -1,3 +1,13 @@
+<?php
+
+use App\Models\MainMenu;
+use App\Models\SubMenu;
+
+$mainmenus = MainMenu::all();
+$submenus = SubMenu::all();
+
+?>
+
 <div id="kt_aside" class="aside overflow-visible pb-5 pt-5 pt-lg-0 " data-kt-drawer="true" data-kt-drawer-name="aside"
     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
     data-kt-drawer-width="{default:'80px', '300px': '100px'}" data-kt-drawer-direction="start"
@@ -5,7 +15,7 @@
     <!--begin::Brand-->
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="{{route('dashboard')}}" class="d-flex align-items-center">
+        <a href="{{ route('dashboard') }}" class="d-flex align-items-center">
             <img alt="Logo" src="{{ asset('public/assets/media/logos/logo.jpg') }}" class="h-45px logo" />
         </a>
         <!--end::Logo-->
@@ -40,7 +50,8 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="<?= $submenu->route != "" ? route($submenu->route) : "" ?> ">
+                                        <a class="menu-link"
+                                            href="<?= $submenu->route != '' ? route($submenu->route) : '' ?> ">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>

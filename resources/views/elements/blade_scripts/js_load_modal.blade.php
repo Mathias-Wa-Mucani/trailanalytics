@@ -56,7 +56,7 @@
 				/**activateForm()*/
 				// initiateDateRangePicker();
 				// initializeTimePicker();
-				selectize();
+				// selectize();
 				loadListing();
 				initiateWYSIWYG();
 				// initializeFilePicker();

@@ -78,7 +78,7 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'db_dmis' => [
+        DMIS_CONNECTION => [
             'driver' => 'pgsql',
             'url' => env('DMIS_DATABASE_URL'),
             'host' => env('DMIS_DB_HOST', '127.0.0.1'),
@@ -139,7 +139,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

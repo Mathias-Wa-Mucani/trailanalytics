@@ -49,3 +49,5 @@ defined('SYSTEM_GENDER_NAME_TAG')                                or define('SYST
 defined('MINIMUM_AGE_NIN')                                or define('MINIMUM_AGE_NIN', 15);
 defined('MINIMUM_GROUP_MEMBERS_COUNT')                                or define('MINIMUM_GROUP_MEMBERS_COUNT', 5);
 defined('USE_APPRAISAL_NEW_PROCESS')                                or define('USE_APPRAISAL_NEW_PROCESS', true);
+
+defined('DMIS_CONNECTION')                                or define('DMIS_CONNECTION', 'db_dmis');

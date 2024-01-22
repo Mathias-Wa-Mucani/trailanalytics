@@ -26,77 +26,27 @@ class ActionHelper
     public static function UpdateIds()
     {
         return array(
-            class_basename(SystemSetting::class) => 'id',
-            class_basename(DisabilityGuiding::class) => 'id',
-            class_basename(PwdRegistrationGuiding::class) => 'id',
-            class_basename(PwdRegistrationService::class) => 'id',
-            class_basename(PwdRegistrationSupport::class) => 'id',
-            class_basename(PwdGroupMember::class) => 'id',
             class_basename(BudgetItem::class) => 'id',
-            class_basename(PwdGroupApplicationSale::class) => 'id',
-            class_basename(AppraisalNationalDeskReviewDetail::class) => 'id',
-            class_basename(DisabilityTypeCause::class) => 'id',
-            class_basename(PwdDisabilityTypeCause::class) => 'id',
-            class_basename(AppraisalNationalDeskReview::class) => 'application_id',
-            class_basename(AppraisalNationalFieldReview::class) => 'application_id',
-            class_basename(AppraisalNationalFunding::class) => 'application_id',
-            class_basename(DisbursementNational::class) => 'id',
-            class_basename(PwdService::class) => 'id',
-            class_basename(AppraisalDistrict::class) => 'application_id',
         );
     }
 
     public static function ImportantFields()
     {
         return  array(
-            class_basename(SystemSetting::class) => 'variable_name',
-            class_basename(DisabilityGuiding::class) => 'description',
-            class_basename(PwdRegistrationGuiding::class) => 'disability_guiding_id',
-            class_basename(PwdRegistrationService::class) => 'pwd_service_received_id',
-            class_basename(PwdRegistrationSupport::class) => 'pwd_support_required_id',
-            class_basename(PwdGroupMember::class) => 'pwd_registration_id',
             class_basename(BudgetItem::class) => 'item_name',
-            class_basename(PwdGroupApplicationSale::class) => 'product_name',
-            class_basename(AppraisalNationalDeskReviewDetail::class) => 'is_pass',
-            class_basename(DisabilityTypeCause::class) => 'disability_cause_id',
-            class_basename(PwdDisabilityTypeCause::class) => 'stp_disability_cause_id',
-            class_basename(AppraisalNationalDeskReview::class) => 'application_id',
-            class_basename(AppraisalNationalFieldReview::class) => 'application_id',
-            class_basename(AppraisalNationalFunding::class) => 'application_id',
-            class_basename(DisbursementNational::class) => 'application_id',
-            class_basename(PwdService::class) => 'name',
-            class_basename(AppraisalDistrict::class) => 'application_id',
         );
     }
 
     public static function ForeignKeys()
     {
         return  array(
-            class_basename(SystemSetting::class) => '',
-            class_basename(DisabilityGuiding::class) => 'disability_id',
-            class_basename(DisabilityGuiding::class) => 'disability_id',
-            class_basename(PwdRegistrationGuiding::class) => 'pwd_registration_id',
-            class_basename(PwdRegistrationService::class) => 'pwd_registration_id',
-            class_basename(PwdRegistrationSupport::class) => 'pwd_registration_id',
-            class_basename(PwdGroupMember::class) => 'pwd_grp_a_registration_id',
             class_basename(BudgetItem::class) => 'budgetable_id',
-            class_basename(PwdGroupApplicationSale::class) => 'pwd_grp_b_applic_main_id',
-            class_basename(AppraisalNationalDeskReviewDetail::class) => 'appraisal_national_deskreview_id',
-            class_basename(DisabilityTypeCause::class) => 'disability_id',
-            class_basename(PwdDisabilityTypeCause::class) => 'pwd_registration_id',
-            class_basename(AppraisalNationalDeskReview::class) => 'application_id',
-            class_basename(AppraisalNationalFieldReview::class) => 'application_id',
-            class_basename(AppraisalNationalFunding::class) => 'application_id',
-            class_basename(DisbursementNational::class) => 'application_id',
-            class_basename(PwdService::class) => 'pwd_services_categories_id',
-            class_basename(AppraisalDistrict::class) => 'application_id',
         );
     }
 
     public static function PolymorshipModels()
     {
         return  array(
-            class_basename(BudgetItem::class) => 'budgetable_id',
             class_basename(BudgetItem::class) => 'budgetable_id',
         );
     }

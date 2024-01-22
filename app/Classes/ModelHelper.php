@@ -19,6 +19,9 @@ use App\Models\AppraisalNationalDeskReview;
 use App\Models\AppraisalNationalFieldReview;
 use App\Models\AppraisalNationalFieldReviewDetail;
 use App\Models\AppraisalNationalFunding;
+use App\Models\OpApplication;
+use App\Models\OpGroupRegistration;
+use App\Models\OpRegistration;
 use App\Models\Views\ViewApplicationDeskApproval;
 use App\Models\Views\ViewApplicationDeskAssignment;
 use App\Models\Views\ViewApplicationDeskReassignment;
@@ -48,29 +51,24 @@ use Illuminate\Support\Str;
 class ModelHelper
 {
 
+
+    public static function GetFinancialYears($application_id)
+    {
+           
+    }
+
     public static function ResetApplication($application_id)
     {
-        AppraisalDistrictReview::where('application_id', $application_id)->forceDelete();
-        AppraisalDistrict::where('application_id', $application_id)->forceDelete();
-        AppraisalNationalDeskReview::where('application_id', $application_id)->forceDelete();
-        // AppraisalDistrict::where('application_id', $application_id)->delete();
-        self::deleteApplicationFieldReview($application_id);
-        self::deleteApplicationFundingReview($application_id);
+        
     }
 
     public static function deleteApplicationFieldReview($application_id)
     {
-        $fieldReview = AppraisalNationalFieldReview::where('application_id', $application_id)->first();
-        if ($fieldReview) {
-            AppraisalNationalFieldReviewDetail::where('appraisal_national_b_fieldreview_id', $fieldReview->id)->delete();
-            $fieldReview->delete();
-            // AppraisalNationalFieldReview::where('application_id', $application_id)->delete();
-        }
+        
     }
 
     public static function deleteApplicationFundingReview($application_id)
     {
-        AppraisalNationalFunding::where('application_id', $application_id)->forceDelete();
     }
 
     public static function getApplicationModels()
@@ -96,10 +94,7 @@ class ModelHelper
     public static function MorphModels()
     {
         return [
-            class_basename(PwdRegistration::class),
-            class_basename(PwdGroupRegistration::class),
-            class_basename(PwdGroupApplication::class),
-            class_basename(AppraisalDistrict::class),
+            // class_basename(PwdRegistration::class),
             class_basename(User::class),
         ];
     }
@@ -124,7 +119,7 @@ class ModelHelper
      */
     public static function SystemSettings()
     {
-        return SystemSetting::first();
+        // return SystemSetting::first();
     }
 
     /**
@@ -140,22 +135,9 @@ class ModelHelper
     }
 
     /**
-     * generates district committee member unique number
-     */
-    public static function generateDistrictCommitteeMemberNumber()
-    {
-        $count = 0;
-        $last = DistrictCommittee::latest()->first();
-        // dd($pwd_count);
-        $count = @$last ? (int)$last->id + 1 : 1;
-        // $count = $count + 1;
-        return "DC" . GeneralHelper::add_leading_zeros(rand(9, 1) . date("d"), 3) . "/" . date("m") . "/" . GeneralHelper::add_leading_zeros(@$count);
-    }
-
-    /**
      * generates pwd_number
      */
-    public static function generatePwdNumber($record = null)
+    public static function generateOpNumber($record = null)
     {
         /// "M / KA/ 20 / 00001";
 
@@ -177,7 +159,7 @@ class ModelHelper
             }
         }
 
-        $last = PwdRegistration::withTrashed()->latest()->first();
+        $last = OpRegistration::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
         return $sex_abbrev . "/" . @$district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
 
@@ -205,7 +187,7 @@ class ModelHelper
             }
         }
 
-        $last = PwdGroupRegistration::withTrashed()->latest()->first();
+        $last = OpGroupRegistration::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
         return "GP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
     }
@@ -224,13 +206,13 @@ class ModelHelper
 
         $district_abbreviation = auth()->user()->district->abbreviation;
         if (@$record->pwd_grp_a_registration_id) {
-            $village = PwdGroupRegistration::find(@$record->pwd_grp_a_registration_id)->village;
+            $village = OpRegistration::find(@$record->pwd_grp_a_registration_id)->village;
             if (@$village) {
                 $district_abbreviation = @$village->district->abbreviation;
             }
         }
 
-        $last = PwdGroupApplication::withTrashed()->latest()->first();
+        $last = OpApplication::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
         return "APP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
     }
@@ -240,11 +222,11 @@ class ModelHelper
      */
     public static function generateComplainReferenceNumber($prefix)
     {
-        $last = PwdComplaintGrievance::latest()->first();
+        // $last = PwdComplaintGrievance::latest()->first();
         // dd($pwd_count);
-        $count = @$last ? (int)$last->id + 1 : 1;
+        // $count = @$last ? (int)$last->id + 1 : 1;
         // $count = $count + 1;
-        return @$prefix . date('y') . date('m') . date('d') . GeneralHelper::add_leading_zeros(@$count);
+        // return @$prefix . date('y') . date('m') . date('d') . GeneralHelper::add_leading_zeros(@$count);
     }
 
     /**

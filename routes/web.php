@@ -7,6 +7,8 @@ use App\Http\Controllers\ModelController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Page3Controller;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RegistrationController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -94,7 +96,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         );
 
 
-        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
+        // Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
 
         $submenus = DB::table('setup_menu_submenu')/*->where('id IN (SELECT submenu_id FROM view_user_roles_details WHERE id =  "' . $user[0]->role_id . '")')*/->where('flag', true)->orderBy('orders', 'ASC')->get();
 
@@ -102,8 +104,29 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             if ($submenu->route != "") {
                 Route::get($submenu->route, [strtok($submenu->url, '/') . '::class' . explode('/', $submenu->url)[1], $submenu->route])->name($submenu->route);
             }
+
+            // Route::get($submenu->route, [strtok($submenu->url , '/') . '::class' .explode('/', $submenu->url  )[1], $submenu->route])->name($submenu->route);
+
+
         }
 
-        Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
+
+        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+
+        /**
+         * old person registration routes
+         */
+        Route::group(
+            [
+                'prefix' => 'registration',
+            ],
+            function () {
+                Route::get('op-registration', [RegistrationController::class, 'opregistration'])->name('op-registration');
+                Route::get('old-persons-form', [RegistrationController::class, 'oldPersonsForm'])->name('old-persons-form');
+                Route::get('group-registration', [RegistrationController::class, 'group_registration'])->name('group_registration');
+            }
+        );
+
+        // Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
     });
 });

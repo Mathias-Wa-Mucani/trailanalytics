@@ -227,32 +227,7 @@ class ActionController extends ApiController
      * Check if record is related to a financial year
      * and set its recording to current fy
      */
-    if (
-      ModelHelper::modelHasField($record, 'stp_financial_year_id') &&
-      !@$this->_post_data['r_fld']['stp_financial_year_id'] &&
-      !@$this->_post_data['fld_id']
-    ) {
-      $record->stp_financial_year_id = @FinancialYear::getCurrentFY()->id;
 
-      /**
-       * Check if model is related to a financial year quarter
-       * then add it also
-       */
-      if (ModelHelper::modelHasField($record, 'stp_quarter_id')) {
-        $record->stp_quarter_id = ModelHelper::getCurrentFinancialYearQuarter()->id;
-      }
-
-      if (ModelHelper::modelHasField($record, 'quarter_id')) {
-        // if quater dates are not set 
-        if (!ModelHelper::getCurrentFinancialYearQuarter()) {
-          return response()->json([
-            'success' => false,
-            'message' => "Please provide financial year quarters start and end dates!",
-          ]);
-        }
-        $record->quarter_id = ModelHelper::getCurrentFinancialYearQuarter()->id;
-      }
-    }
 
     foreach ($this->_arr_input_fields as $field => $value) {
       if (is_array($value)) {
