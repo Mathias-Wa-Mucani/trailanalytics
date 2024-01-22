@@ -5,6 +5,9 @@ $financial_years = FinancialYear::pluck('name', 'id')->prepend('Select', '');
 $quarters = Quarter::pluck('name', 'id')->prepend('Select', '');
 $group_roles = \App\Models\GroupRole::all();
 $members = \App\Models\OpRegistration::all();
+
+// dd($members);
+
 ?>
 <div class="row justify-content-center">
     <div class="col-md-12">
@@ -124,8 +127,9 @@ $members = \App\Models\OpRegistration::all();
                             </select>
                         </div> --}}
                         <select class="form-control" name="group_members[rec_a_elder_id][]">
-                            @foreach ($members as $members)
-                                <option value="{{ $member->id }}" {{ $member->full_name }} </option>
+                            <option value=""> --select-- </option>
+                            @foreach ($members as $member)
+                                <option value="{{ $member->id }}"> {{ $member->full_name }} </option>
                             @endforeach
                         </select>
                     </td>

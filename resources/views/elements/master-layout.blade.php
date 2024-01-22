@@ -113,13 +113,13 @@ License: For each use you must have a valid license purchased only from above li
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 <!--begin::Header-->
                 @auth
-                @include('elements.header')
+                    @include('elements.header')
                 @endauth
                 <!--end::Header-->
 
                 <!--begin::Toolbar-->
                 @auth
-                @include('elements.toolbar')
+                    @include('elements.toolbar')
                 @endauth
                 <!--end::Toolbar-->
                 <!--begin::Content-->
