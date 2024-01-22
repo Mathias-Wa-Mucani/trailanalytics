@@ -24,8 +24,9 @@
         </div>
     </div>
     <!--end::Row-->
-@endsection
-{{-- end main content --}}
-@section('custom-js')
-    {{-- @include('scripts.dashboard.main') --}}
+
+    @push('scripts')
+        {{ $dataTable->scripts() }}
+    @endpush
+    
 @endsection

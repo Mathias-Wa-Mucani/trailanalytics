@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\GeneralHelper;
 use App\DataTables\OpGroupDataTable;
 use App\DataTables\ViewOpGroupDataTable;
+use App\DataTables\ViewOpRegistrationDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class RegistrationController extends Controller
         // $this->module_path = GeneralHelper::DashboardPath('');
     }
 
-    public function opregistration()
+    public function opregistration(ViewOpRegistrationDataTable $dataTable)
     {
         $data['title']    = "OP Registration";
 
@@ -28,7 +29,8 @@ class RegistrationController extends Controller
         // $data['newSources']             = DB::table('view_dashboard_proj_progress_breakdown')->get();
         // return '<pre>'.json_encode($data['dashboardIndicators']->getdata(), JSON_PRETTY_PRINT);//->access->bgcolor;
         // return $data;
-        return $this->view('dashboard.registration.index', $data);
+        return $dataTable->render('dashboard.registration.index', $data);
+        // return $this->view('dashboard.registration.index', $data);
         // return view($this->module_path . '.dashboard', $data);
     }
     
