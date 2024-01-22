@@ -75,10 +75,12 @@ class ViewOpRegistrationDataTable extends DataTable
     {
         return [
             Column::make('id'),
+            Column::make('full_name')->title('Name'),
             Column::make('district'),
             Column::make('nin'),
-            Column::make('age'),
-            Column::make('sex'),
+            Column::make('elder_number')->title('Elder No.'),
+            // Column::make('age'),
+            Column::make('sex_text'),
             Column::make('person_type')->title('Type'),
             Column::computed('action')
         ];

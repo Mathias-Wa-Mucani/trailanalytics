@@ -1,7 +1,7 @@
 <script>
     /**function to load datatable lists on pages*/
     function loadListing() {
-        // $('table.dataTable').DataTable().fnDestroy().ajax.reload();
+        $('table.dataTable').DataTable().fnDestroy().ajax.reload();
     }
 
     loadListing();

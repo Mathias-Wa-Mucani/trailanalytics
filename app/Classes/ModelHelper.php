@@ -145,20 +145,22 @@ class ModelHelper
             return implode("/", $record_number_array);
         }
 
-        $district_abbreviation = auth()->user()->district->abbreviation;
-        $sex_abbrev = "D";
-        if (@$record->village_id) {
-            $district_abbreviation = Village::find(@$record->village_id)->district->abbreviation;
-            $sex_abbrev = substr($record->sex, 0, 1);
-        } else {
-            if (@request()->district_id) {
-                $district_abbreviation = District::find(@request()->district_id)->abbreviation;
-            }
-        }
+        // $district_abbreviation = auth()->user()->district->abbreviation;
+        // $sex_abbrev = "D";
+        // if (@$record->village_id) {
+        //     $district_abbreviation = Village::find(@$record->village_id)->district->abbreviation;
+        //     $sex_abbrev = substr($record->sex, 0, 1);
+        // } else {
+        //     if (@request()->district_id) {
+        //         $district_abbreviation = District::find(@request()->district_id)->abbreviation;
+        //     }
+        // }
 
         $last = OpRegistration::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
-        return $sex_abbrev . "/" . @$district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
+        // return $sex_abbrev . "/" . @$district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
+        return "EL-" . GeneralHelper::add_leading_zeros(@$count);
+
 
         // return $sex_abbrev . "/" . @$district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$record->id);
     }

@@ -92,12 +92,12 @@
                                             class='text-danger font-weight-bolder'>*</span></label><br>
                                     <div class="row">
                                         <div class="col-6">
-                                            <input type="radio" name="r_fld[sex]" value="Male" id=""
+                                            <input type="radio" name="r_fld[sex]" value="1" id=""
                                                 class="form-radio form-select-sm" required>Male
 
                                         </div>
                                         <div class="col-6">
-                                            <input type="radio" name="r_fld[sex]" value="Female" id=""
+                                            <input type="radio" name="r_fld[sex]" value="2" id=""
                                                 class="form-radio form-select-sm" required>Female
 
                                         </div>

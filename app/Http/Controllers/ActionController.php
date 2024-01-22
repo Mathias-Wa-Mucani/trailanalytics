@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\EmailController;
 use App\Models\BudgetItem;
 use App\Models\FinancialYear;
+use App\Models\OpRegistration;
 use App\Models\SystemSetting;
 use App\Models\User;
 use Carbon\Carbon;
@@ -116,17 +117,15 @@ class ActionController extends ApiController
       /**
        * if we are saving a group
        */
-      else if ($table == 'GroupRegistration') {
-        // dd(@$this->_post_data['group_members']);
-        // $members = @$this->_post_data['group_members']['pwd_registration_id'] ?? [];
-        // $members = array_filter($members, function ($id) {
-        //   return $id;
-        // });
-
-        // $num_members = count($members);
-        // if ($num_members < MINIMUM_GROUP_MEMBERS_COUNT) {
-        //   return $this->errorResponse("Group should contain a minimum of " . MINIMUM_GROUP_MEMBERS_COUNT . ' individuals');
-        // }
+      else if ($table == class_basename(OpRegistration::class)) {
+        if (@$this->_post_data['contact_info']) {
+          foreach (@$this->_post_data['contact_info'] as $key => $contact) {
+            if (in_array($key, $this->arrayPhoneNumberFields)) {
+              $this->_post_data['contact_info'][$key] = GeneralHelper::PhoneFormatter($contact);
+            }
+          }
+          $this->_post_data['r_fld']['contact'] = json_encode(@$this->_post_data['contact_info']);
+        }
       }
 
       /**
