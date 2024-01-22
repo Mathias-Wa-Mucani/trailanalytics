@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class ModelController extends Controller
+class ModelControllerMap extends Controller
 {
     public $path;
 
