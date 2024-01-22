@@ -54,17 +54,14 @@ class ModelHelper
 
     public static function GetFinancialYears($application_id)
     {
-           
     }
 
     public static function ResetApplication($application_id)
     {
-        
     }
 
     public static function deleteApplicationFieldReview($application_id)
     {
-        
     }
 
     public static function deleteApplicationFundingReview($application_id)
@@ -178,18 +175,19 @@ class ModelHelper
             return implode("/", $record_number_array);
         }
 
-        $district_abbreviation = auth()->user()->district->abbreviation;
-        if (@$record->village_id) {
-            $district_abbreviation = Village::find(@$record->village_id)->district->abbreviation;
-        } else {
-            if (@request()->district_id) {
-                $district_abbreviation = District::find(@request()->district_id)->abbreviation;
-            }
-        }
+        // $district_abbreviation = auth()->user()->district->abbreviation;
+        // if (@$record->village_id) {
+        //     $district_abbreviation = Village::find(@$record->village_id)->district->abbreviation;
+        // } else {
+        //     if (@request()->district_id) {
+        //         $district_abbreviation = District::find(@request()->district_id)->abbreviation;
+        //     }
+        // }
 
         $last = OpGroupRegistration::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
-        return "GP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
+        // return "GP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
+        return "GP-" . GeneralHelper::add_leading_zeros(@$count);
     }
 
     /**

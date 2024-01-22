@@ -15,36 +15,11 @@
                     </a>
 
                 </div>
-                <div class="menu-dropdown dropdown-inline mr-4 d-none">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Dropup
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="icon-user"></i> TestDropdown
-                            <span class="caret"></span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="javascript:void();" data-toggle='tooltip' data-placement='top'
-                            title='Click to view curriculum'><i class="fa fa-eye text-success btnViewCurri">View</i></a>
-                        <div class="dropdown-divider"></div>
-                        <a role='button' class='fas fa-trash  fa-lg text-danger btnDeleteCurri' data-toggle='tooltip'
-                            data-placement='top' title='Click to delete'> Delete</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="text-warning fa fa-building fa-lg btnArchiveCurri" role="button" data-toggle='tooltip'
-                            data-placement='top' title='Click to archive'> Archive</a>
-
+                <div class="card-body table-responsive">
+                    <div class="col-md-12">
+                        {{ $dataTable->table(['class' => 'table table-bordered table-striped table-hover']) }}
                     </div>
                 </div>
-
-                <div class="card-body table-responsive">
-
-
-                </div>
-
-
-
             </div>
         </div>
     </div>

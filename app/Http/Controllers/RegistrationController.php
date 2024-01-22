@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classes\GeneralHelper;
 use App\DataTables\OpGroupDataTable;
+use App\DataTables\ViewOpGroupDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class RegistrationController extends Controller
     }
 
 
-    public function group_registration(OpGroupDataTable $dataTable)
+    public function group_registration(ViewOpGroupDataTable $dataTable)
     {
         $data['title']    = "Groups";
         return $dataTable->render('dashboard.registration.groups', $data);
