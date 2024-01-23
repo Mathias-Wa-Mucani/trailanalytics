@@ -63,7 +63,10 @@ class ViewOpRegistrationDataTable extends DataTable
         return $this->builder()
             ->setTableId('projects-table')
             ->columns($this->getColumns())
-            ->minifiedAjax();
+            ->minifiedAjax()
+            ->addAction([
+                'buttons' => ['Edit', 'Delete'],
+            ]);
     }
 
     /**

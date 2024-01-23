@@ -127,6 +127,5 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             }
         );
 
-        // Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
     });
 });
