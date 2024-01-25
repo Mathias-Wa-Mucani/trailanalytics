@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Classes\GeneralHelper;
 use App\DataTables\OpGroupDataTable;
+use App\DataTables\ViewElderPersonDataTable;
+use App\DataTables\ViewOldPersonDataTable;
 use App\DataTables\ViewOpGroupDataTable;
 use App\DataTables\ViewOpRegistrationDataTable;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class RegistrationController extends Controller
         // $this->module_path = GeneralHelper::DashboardPath('');
     }
 
-    public function opregistration(ViewOpRegistrationDataTable $dataTable)
+    public function opregistration(ViewOldPersonDataTable $dataTable)
     {
         $data['title']    = "OP Registration";
 
@@ -44,22 +46,7 @@ class RegistrationController extends Controller
         $data['districts']   = DB::table('stp_admin_unit_a_district')->get();
         // return '<pre>'.json_encode($data['dashboardIndicators']->getdata(), JSON_PRETTY_PRINT);//->access->bgcolor;
         // return $data;
-        return $this->view('dashboard.registration.save-old-persons', $data);
-        // return view($this->module_path . '.dashboard', $data);
-    }
-
-
-    public function group_registration(ViewOpGroupDataTable $dataTable)
-    {
-        $data['title']    = "Groups";
-        return $dataTable->render('dashboard.registration.groups', $data);
-
-        // $data['dashboardIndicators']    = ApiDashboardController::dashboard();
-        // $data['projectProgress']        = DB::table('view_dashboard_proj_progress_totals')->get();
-        // $data['newSources']             = DB::table('view_dashboard_proj_progress_breakdown')->get();
-        // return '<pre>'.json_encode($data['dashboardIndicators']->getdata(), JSON_PRETTY_PRINT);//->access->bgcolor;
-        // return $data;
-        return $this->view('dashboard.registration.groups', $data);
+        return $this->view('dashboard.registration.create_old_person', $data);
         // return view($this->module_path . '.dashboard', $data);
     }
 

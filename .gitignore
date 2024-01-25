@@ -9,6 +9,7 @@ dist/
 # vendor/
 .env
 todo/
+public/documents/
 
 # Compiled Java class files
 *.class

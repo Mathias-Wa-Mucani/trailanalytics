@@ -11,6 +11,7 @@ use App\Models\BudgetItem;
 use App\Models\DisabilityGuiding;
 use App\Models\DisabilityTypeCause;
 use App\Models\DisbursementNational;
+use App\Models\OldPersonGroupMember;
 use App\Models\PwdDisabilityTypeCause;
 use App\Models\PwdGroupApplicationSale;
 use App\Models\PwdGroupMember;
@@ -27,6 +28,7 @@ class ActionHelper
     {
         return array(
             class_basename(BudgetItem::class) => 'id',
+            class_basename(OldPersonGroupMember::class) => 'id',
         );
     }
 
@@ -34,6 +36,7 @@ class ActionHelper
     {
         return  array(
             class_basename(BudgetItem::class) => 'item_name',
+            class_basename(OldPersonGroupMember::class) => 'rec_a_elder_id',
         );
     }
 
@@ -41,6 +44,7 @@ class ActionHelper
     {
         return  array(
             class_basename(BudgetItem::class) => 'budgetable_id',
+            class_basename(BudgetItem::class) => 'rec_b_group_id',
         );
     }
 
@@ -136,6 +140,8 @@ class ActionHelper
             'approved_amount',
             'amount_received',
             'house_hold_size',
+            'est_total_cost',
+            'total_budget',
         );
     }
 

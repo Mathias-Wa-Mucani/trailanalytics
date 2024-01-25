@@ -24,6 +24,24 @@ $("body").on(
             thisForm.find(".app_action").val(action_);
         }
 
+        if ($(this).hasClass("submit-draft")) {
+            thisForm.find("input,select,textarea").each(function () {
+                if ($(this).hasClass("draft")) {
+                    console.log("is draft");
+                    $(this).removeAttr("required");
+                }
+            });
+
+            thisForm.find(".is-final").val(0);
+        } else {
+            thisForm.find("input,select,textarea").each(function () {
+                if ($(this).data("is-required")) {
+                    $(this).attr("required", "required");
+                }
+            });
+            thisForm.find(".is-final").val(1);
+        }
+
         var formId = thisForm.attr("id");
         console.log("form id ", formId);
 

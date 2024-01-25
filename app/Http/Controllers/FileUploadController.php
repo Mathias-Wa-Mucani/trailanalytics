@@ -27,7 +27,7 @@ class FileUploadController extends Controller
     public function uploadFiles($data, $filesArray, $model, $model_id, $section = null)
     {
         // header ("Connection: close");
-        
+
         $appModelSystem = "App\\Models\\" . $model;
         $record = $appModelSystem::find($model_id);
         // dd($record);
@@ -88,13 +88,13 @@ class FileUploadController extends Controller
             /**
              * Check if document exists
              */
-            $currentDoc = $is_publications ? $record : @$record->documents->where('document_tag', $document_tag)->where('section', @$section)->first();
+            $currentDoc = @$record->documents->where('document_tag', $document_tag)->where('section', @$section)->first();
             if ($currentDoc) {
                 /**
                  * Get current document location
                  * if found remove it from the server
                  */
-                $_currentLocation = $is_publications ? PUBLICATIONS_DIR : DOCUMENTS_DIR . '/' . $model;
+                $_currentLocation = DOCUMENTS_DIR . '/' . $model;
 
                 $currentLocation = public_path($_currentLocation . '/' . $currentDoc->path);
                 if (file_exists(@$currentLocation) && !is_dir(@$currentLocation)) {
@@ -104,7 +104,7 @@ class FileUploadController extends Controller
                 /**
                  * update document 
                  */
-                $currentDoc->path = @$new_name;
+                $currentDoc->paths = @$new_name;
                 $currentDoc->original_name = @$original_name;
                 $currentDoc->document_tag = @$document_tag;
                 $currentDoc->mime_type = $mimeType;
@@ -118,7 +118,7 @@ class FileUploadController extends Controller
                  */
                 $_file_data = array(
                     'description' => @GeneralHelper::document_tags()[@$document_tag]['description'],
-                    'path' => @$new_name,
+                    'paths' => @$new_name,
                     'original_name' => @$original_name,
                     'section' => @$section,
                     'document_tag' => $document_tag,
@@ -126,7 +126,7 @@ class FileUploadController extends Controller
                     'mime_type' => $mimeType,
                     'title' => null,
                 );
-                if ($record && !$is_publications) $record->documents()->create($_file_data);
+                if (@$record) $record->documents()->create($_file_data);
             }
         }
     }

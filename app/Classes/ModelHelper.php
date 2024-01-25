@@ -19,9 +19,13 @@ use App\Models\AppraisalNationalDeskReview;
 use App\Models\AppraisalNationalFieldReview;
 use App\Models\AppraisalNationalFieldReviewDetail;
 use App\Models\AppraisalNationalFunding;
+use App\Models\OldPerson;
+use App\Models\OldPersonApplication;
+use App\Models\OldPersonGroup;
 use App\Models\OpApplication;
 use App\Models\OpGroupRegistration;
 use App\Models\OpRegistration;
+use App\Models\Quarter;
 use App\Models\Views\ViewApplicationDeskApproval;
 use App\Models\Views\ViewApplicationDeskAssignment;
 use App\Models\Views\ViewApplicationDeskReassignment;
@@ -93,6 +97,9 @@ class ModelHelper
         return [
             // class_basename(PwdRegistration::class),
             class_basename(User::class),
+            class_basename(OldPerson::class),
+            class_basename(OldPersonGroup::class),
+            class_basename(OldPersonApplication::class),
         ];
     }
 
@@ -156,7 +163,7 @@ class ModelHelper
         //     }
         // }
 
-        $last = OpRegistration::withTrashed()->latest()->first();
+        $last = OldPerson::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
         // return $sex_abbrev . "/" . @$district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
         return "EL-" . GeneralHelper::add_leading_zeros(@$count);
@@ -186,7 +193,7 @@ class ModelHelper
         //     }
         // }
 
-        $last = OpGroupRegistration::withTrashed()->latest()->first();
+        $last = OldPersonGroup::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
         // return "GP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
         return "GP-" . GeneralHelper::add_leading_zeros(@$count);
@@ -291,7 +298,7 @@ class ModelHelper
         //     ->where('end_date', '<=', $now)
         //     ->first();
         // $now = Carbon::now();
-        $quarters = FinancialYearQuarter::all();
+        $quarters = Quarter::all();
         foreach ($quarters as $quarter) {
             $start_date = Carbon::parse($quarter->start_date);
             $end_date = Carbon::parse($quarter->end_date);
@@ -345,9 +352,13 @@ class ModelHelper
         if (array_search($modelName, $updateIds) >= 0) {
             // dd($data[$updateIds[$modelName]]);
             // $record = $model::where($updateIds[$modelName], $data[$updateIds[$modelName]])->first();
-            $record = $model::where([$updateIds[$modelName] => $data[$updateIds[$modelName]]])->first();
+            if (@$updateIds[$modelName]) {
+                $record = $model::where([$updateIds[$modelName] => $data[$updateIds[$modelName]]])->first();
+                $record = $record ? $record : new $model;
+            } else {
+                $record =  $model::find(@$data['id']) ?? new $model;
+            }
             // dd($record);
-            $record = $record ? $record : new $model;
         } else {
             $record =  $model::find(@$data['id']) ?? new $model;
         }

@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DmisController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ModelController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Page3Controller;
@@ -41,6 +44,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('role:' . RolePermission::ROLE_SYSTEM_ADMINISTRATOR);
     Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('import-dmis-data', [DmisController::class, 'import_dmis_data']);
         Route::get('', [DashboardController::class, 'index'])->name('dashboard');
         /**
          * Custom CRUD routes 
@@ -110,9 +114,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         }
 
-
-        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
-
         /**
          * old person registration routes
          */
@@ -127,6 +128,32 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             }
         );
 
+        /**
+         * old person groups routes
+         */
+        Route::group(
+            [
+                'prefix' => 'groups',
+            ],
+            function () {
+                Route::get('', [GroupController::class, 'index'])->name('groups');
+            }
+        );
+
+
+        /**
+         * application routes
+         */
+        Route::group(
+            [
+                'prefix' => 'applications',
+            ],
+            function () {
+                Route::get('', [ApplicationController::class, 'index'])->name('applications');
+            }
+        );
+
         // Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
+
     });
 });

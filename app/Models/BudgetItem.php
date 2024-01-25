@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BudgetItem extends Model
 {
-    use HasFactory;
+    protected $table = 'rec_c_application_budget';
 }

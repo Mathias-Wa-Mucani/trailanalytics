@@ -20,7 +20,7 @@ class GeneralHelper
   public static function date_picker_format_date($date)
   {
     if (!$date || $date == '1970-01-01' || $date == '' || $date == '0000-00-00') return '';
-    return date("j M Y", strtotime($date));
+    return date("M/j/Y", strtotime($date));
   }
 
   public static function AppOnline()
@@ -426,11 +426,13 @@ class GeneralHelper
   public static function getDocLocation($record, $tag, $useServerDocumentRoot = false)
   {
     if ($record && $record->documents) {
+      // dd($tag);
       $document = @$record->documents->where('document_tag', $tag)->first();
-      // return ($tag);
+      // dd ($document);
       if ($document) {
+        // dd(@$document);
         // return 'sdfsdfsd';
-        $path =  "/" . DOCUMENTS_DIR . '/' . ModelHelper::TableFromView(class_basename(@$document->documentable)) . '/' . @$document->path;
+        $path =  "/" . DOCUMENTS_DIR . '/' . ModelHelper::TableFromView(class_basename(@$document->documentable)) . '/' . @$document->paths;
         if ($useServerDocumentRoot) {
           return $_SERVER['DOCUMENT_ROOT'] . $path;
         }

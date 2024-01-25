@@ -35,10 +35,13 @@ class ModuleController extends Controller
         $record = null;
         $appModelLong = null;
 
-        if (@$request->Model && @$request->ModelId) {
-            $model = ModelHelper::generateModelFromString(@$request->Model);
+
+        $ModelId = GeneralHelper::getRecordId($request->ModelId);
+
+        if (@$request->Model && $ModelId) {
+            $model = ModelHelper::generateModelFromString($ModelId);
             $appModelLong = "App\\Models\\" . ucfirst($request->Model);
-            $record = $appModelLong::find(@$request->ModelId);
+            $record = $appModelLong::find($ModelId);
         }
         // dd($record);
         if (@$sub_section) {

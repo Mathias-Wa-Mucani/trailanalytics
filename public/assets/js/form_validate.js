@@ -19,10 +19,10 @@ function validate_form(frm) {
     var valid = true;
     var errors = 0;
     var requiredFieldElements = "input,select, textarea";
-    var ingnoredFieldElements = ":submit, :reset, :image, [disabled],:hidden";
+    var ignoredFieldElements = ":submit, :reset, :image, [disabled],:hidden";
     $("#" + frm)
         .find(requiredFieldElements)
-        .not(ingnoredFieldElements)
+        .not(ignoredFieldElements)
         .each(function () {
             errors += validate_control($(this)) ? 0 : 1;
             // if ($(this).attr("required") && !$(this).val()) {
@@ -35,7 +35,7 @@ function validate_form(frm) {
         });
     // valid = false
     // return valid;
-    // reorganize_accordion_sections(frm,requiredFieldElements,ingnoredFieldElements);
+    // reorganize_accordion_sections(frm,requiredFieldElements,ignoredFieldElements);
 
     valid = errors == 0 ? true : false;
 
@@ -58,7 +58,7 @@ function validate_form(frm) {
 function reorganize_accordion_sections(
     frm,
     requiredFieldElements,
-    ingnoredFieldElements
+    ignoredFieldElements
 ) {
     let accordionSection = $("#" + frm).find(".panel-group");
     let form_sections = accordionSection.find(".panel");

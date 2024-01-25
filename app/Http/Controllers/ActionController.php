@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\EmailController;
 use App\Models\BudgetItem;
 use App\Models\FinancialYear;
+use App\Models\OldPerson;
+use App\Models\OldPersonGroup;
+use App\Models\OldPersonGroupMember;
 use App\Models\OpRegistration;
 use App\Models\SystemSetting;
 use App\Models\User;
@@ -117,7 +120,21 @@ class ActionController extends ApiController
       /**
        * if we are saving a group
        */
-      else if ($table == class_basename(OpRegistration::class)) {
+      else if ($table == class_basename(OldPerson::class)) {
+        if (@$this->_post_data['contact_info']) {
+          foreach (@$this->_post_data['contact_info'] as $key => $contact) {
+            if (in_array($key, $this->arrayPhoneNumberFields)) {
+              $this->_post_data['contact_info'][$key] = GeneralHelper::PhoneFormatter($contact);
+            }
+          }
+          $this->_post_data['r_fld']['contact'] = json_encode(@$this->_post_data['contact_info']);
+        }
+      }
+
+      /**
+       * group
+       */
+      else if ($table == class_basename(OldPersonGroup::class)) {
         if (@$this->_post_data['contact_info']) {
           foreach (@$this->_post_data['contact_info'] as $key => $contact) {
             if (in_array($key, $this->arrayPhoneNumberFields)) {
@@ -153,15 +170,23 @@ class ActionController extends ApiController
           // $this->multipleSave('pwd_services_received', 'pwd_services_received_count', class_basename(PwdRegistrationService::class));
         }
 
+        if ($table == class_basename(OldPersonGroup::class) && @$this->_post_data['group_members']) {
+          $this->multipleSave('group_members', 'group_members_count', class_basename(OldPersonGroupMember::class));
+        }
+
+        /**
+         * Check for attached documents
+         */
+
+        // dd(@$this->_post_data);
+        if (@$this->_post_data['documents']) {
+          // $this->fileService->uploadFiles($this->_post_data, $this->_post_data['documents'], $table, $this->_transactionId);
+        }
+
 
         // add to budget
         if (@$this->_post_data['budget_item']) {
-          $this->multipleSave('budget_item', 'budget_item_count', class_basename(BudgetItem::class));
-        }
-
-        // 
-        if ($table == "FinancialYear" && @$this->_post_data['is_current']) {
-          FinancialYear::setCurrentFinancialYear($this->_record);
+          // $this->multipleSave('budget_item', 'budget_item_count', class_basename(BudgetItem::class));
         }
 
         /**
