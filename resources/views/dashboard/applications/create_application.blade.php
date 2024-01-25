@@ -190,7 +190,8 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                 <span class="lbl"></span>
                                 <input type="hidden" name="budget_item_count[]" value="1">
                                 <input type="hidden" name="budget_item[id][]" value="">
-                                <input type="hidden" name="budget_item[rec_c_application_id][]" value="{{ @$record->id }}">
+                                <input type="hidden" name="budget_item[rec_c_application_id][]"
+                                    value="{{ @$record->id }}">
                                 {{-- <input type="hidden" name="budget_item[budgetable_type][]"
                                     value="{{ (new OldPersonGroup())->getTable() }}"> --}}
                             </td>
@@ -262,11 +263,11 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                 </table>
             </div>
             <div class="col-md-12">
-                <button type="button" class="btn btn-white btn-primary btn-sm mr-10"
+                <button type="button" class="btn btn-white btn-primary btn-mini mr-10"
                     onClick="addRow('application_budget_table');">
                     <i class="fa fa-plus"></i> Add Item
                 </button>
-                <button type="button" class="btn btn-white btn-danger btn-sm"
+                <button type="button" class="btn btn-white btn-danger btn-mini"
                     onClick="deleteRow('application_budget_table');">
                     <i class="fa fa-remove"></i> Remove selected
                 </button>
@@ -384,17 +385,16 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                 </table>
             </div>
             <div class="col-md-12">
-                <button type="button" class="btn btn-white btn-primary btn-sm mr-10"
+                <button type="button" class="btn btn-white btn-primary btn-mini mr-10"
                     onClick="addRow('application_projection_sales_table');">
                     <i class="fa fa-plus"></i> Add Item
                 </button>
-                <button type="button" class="btn btn-white btn-danger btn-sm"
+                <button type="button" class="btn btn-white btn-danger btn-mini"
                     onClick="deleteRow('application_projection_sales_table');">
                     <i class="fa fa-remove"></i> Remove selected
                 </button>
             </div>
         </div>
-
 
 
         <div class="report-main-header gray md">

@@ -508,7 +508,8 @@ select:not(.form-control), select:not(.form-control):focus {
 }
 
 .btn-mini {
-    padding: 2px 9px !important;
+    padding: 2px 7px !important;
+    font-size: 13px !important;
 }
 
 .text-bold {
@@ -1230,3 +1231,4 @@ tr td:not(:last-child) .dt-actions .actions-list::after {
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control, .select2-search input[type=text][disabled], .select2-search input[type=text][readonly], fieldset[disabled] .select2-search input[type=text]{
     color: #575858 !important;
 }
+

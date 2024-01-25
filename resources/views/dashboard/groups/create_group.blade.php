@@ -205,11 +205,11 @@ $members = \App\Models\OldPerson::all();
                     </tbody>
                 </table>
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-white btn-primary btn-sm mr-10"
+                    <button type="button" class="btn btn-white btn-primary btn-mini mr-10"
                         onClick="addRow('group_member_table');">
                         <i class="fa fa-plus"></i> {{ __('Add Member') }}
                     </button>
-                    <button type="button" class="btn btn-white btn-danger btn-sm"
+                    <button type="button" class="btn btn-white btn-danger btn-mini"
                         onClick="deleteRow('group_member_table');">
                         <i class="fa fa-remove"></i> {{ __('Remove selected') }}
                     </button>
