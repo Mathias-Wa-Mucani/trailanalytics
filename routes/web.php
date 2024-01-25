@@ -122,9 +122,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
                 'prefix' => 'registration',
             ],
             function () {
+                Route::get('', [RegistrationController::class, 'index'])->name('registration');
                 Route::get('op-registration', [RegistrationController::class, 'opregistration'])->name('op-registration');
                 Route::get('old-persons-form', [RegistrationController::class, 'oldPersonsForm'])->name('old-persons-form');
-                Route::get('group-registration', [RegistrationController::class, 'index'])->name('group_registration');
             }
         );
 
