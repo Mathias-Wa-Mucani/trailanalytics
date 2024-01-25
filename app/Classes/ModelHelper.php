@@ -211,17 +211,19 @@ class ModelHelper
             return implode("/", $record_number_array);
         }
 
-        $district_abbreviation = auth()->user()->district->abbreviation;
-        if (@$record->pwd_grp_a_registration_id) {
-            $village = OpRegistration::find(@$record->pwd_grp_a_registration_id)->village;
-            if (@$village) {
-                $district_abbreviation = @$village->district->abbreviation;
-            }
-        }
+        // $district_abbreviation = auth()->user()->district->abbreviation;
+        // if (@$record->pwd_grp_a_registration_id) {
+        //     $village = OpRegistration::find(@$record->pwd_grp_a_registration_id)->village;
+        //     if (@$village) {
+        //         $district_abbreviation = @$village->district->abbreviation;
+        //     }
+        // }
 
-        $last = OpApplication::withTrashed()->latest()->first();
+        $last = OldPersonApplication::withTrashed()->latest()->first();
         $count = @$last ? (int)$last->id + 1 : 1;
-        return "APP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
+        return "APP-" . GeneralHelper::add_leading_zeros(@$count);
+        // $count = @$last ? (int)$last->id + 1 : 1;
+        // return "APP/" . $district_abbreviation . '/' . self::getCurrentFyYearShort() . '/' . GeneralHelper::add_leading_zeros(@$count);
     }
 
     /**

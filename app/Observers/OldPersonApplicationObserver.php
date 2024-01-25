@@ -2,10 +2,19 @@
 
 namespace App\Observers;
 
+use App\Classes\ModelHelper;
 use App\Models\OldPersonApplication;
 
 class OldPersonApplicationObserver
 {
+
+    public function creating(OldPersonApplication $oldPersonApplication)
+    {
+        $oldPersonApplication->app_number = ModelHelper::generateGroupApplicationNumber($oldPersonApplication);
+        $oldPersonApplication->created_by = auth()->user()->id;
+    }
+
+
     /**
      * Handle the OldPersonApplication "created" event.
      *
