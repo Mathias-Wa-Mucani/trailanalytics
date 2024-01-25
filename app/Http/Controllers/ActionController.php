@@ -13,6 +13,7 @@ use App\Http\Controllers\EmailController;
 use App\Models\BudgetItem;
 use App\Models\FinancialYear;
 use App\Models\OldPerson;
+use App\Models\OldPersonApplicationSale;
 use App\Models\OldPersonGroup;
 use App\Models\OldPersonGroupMember;
 use App\Models\OpRegistration;
@@ -186,7 +187,11 @@ class ActionController extends ApiController
 
         // add to budget
         if (@$this->_post_data['budget_item']) {
-          // $this->multipleSave('budget_item', 'budget_item_count', class_basename(BudgetItem::class));
+          $this->multipleSave('budget_item', 'budget_item_count', class_basename(BudgetItem::class));
+        }
+
+        if (@$this->_post_data['sales_projection']) {
+          $this->multipleSave('sales_projection', 'sales_projection_count', class_basename(OldPersonApplicationSale::class));
         }
 
         /**

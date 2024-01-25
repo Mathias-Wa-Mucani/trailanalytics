@@ -6,7 +6,7 @@
             <span> View Details </span>
         </a>
 
-        <a class="dynamic-modal" data-modal-target="modal-large" title="Edit:  Group - {{ @$record->app_number }}"
+        <a class="dynamic-modal" data-modal-target="modal-large" title="Edit:  Application - {{ @$record->app_number }}"
             href="{{ route('module.create', ['Module' => 'applications', 'Model' => ModelHelper::TableFromView(class_basename(@$record)), 'ModelId' => GeneralHelper::encrypt_data(@$record->id), 'Section' => 'application']) }}">
             <i class="fa fa-edit"></i> Edit Record
         </a>

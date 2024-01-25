@@ -8,7 +8,7 @@ $financial_years = FinancialYear::pluck('name', 'dmis_financial_year_id')->prepe
 $quarters = Quarter::pluck('name', 'dmis_quarter_id')->prepend('Select', '');
 $groups = OldPersonGroup::all();
 $project_industries = ProjectIndustry::pluck('name', 'dmis_project_industry_id')->prepend('select', '');
-$unit_measures = \App\Models\UnitMeasure::pluck('name', 'dmis_unit_measure_id')->prepend('Select', '');
+$unit_measures = \App\Models\UnitMeasure::pluck('name', 'name')->prepend('Select', '');
 $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
 ?>
 
@@ -190,16 +190,16 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                 <span class="lbl"></span>
                                 <input type="hidden" name="budget_item_count[]" value="1">
                                 <input type="hidden" name="budget_item[id][]" value="">
-                                <input type="hidden" name="budget_item[budgetable_id][]" value="{{ @$record->id }}">
-                                <input type="hidden" name="budget_item[budgetable_type][]"
-                                    value="{{ (new OldPersonGroup())->getTable() }}">
+                                <input type="hidden" name="budget_item[rec_c_application_id][]" value="{{ @$record->id }}">
+                                {{-- <input type="hidden" name="budget_item[budgetable_type][]"
+                                    value="{{ (new OldPersonGroup())->getTable() }}"> --}}
                             </td>
                             <td>
                                 {{ Form::text('budget_item[item_name][]', null, ['class' => 'form-control']) }}
                             </td>
                             <td>
                                 <div class="clearfix">
-                                    {{ Form::select('budget_item[stp_unit_measure_id][]', @$unit_measures, 1, ['class' => 'form-control', 'required']) }}
+                                    {{ Form::select('budget_item[unit_measure][]', @$unit_measures, 1, ['class' => 'form-control', 'required']) }}
                                 </div>
                             </td>
                             <td>
@@ -215,7 +215,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                             </td>
 
                             <td>
-                                {{ Form::textarea('budget_item[comment][]', null, ['class' => 'form-control', 'rows' => 2]) }}
+                                {{ Form::textarea('budget_item[comments][]', null, ['class' => 'form-control', 'rows' => 2]) }}
                             </td>
                         </tr>
 
@@ -226,17 +226,17 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                         <span class="lbl"></span>
                                         <input type="hidden" name="budget_item_count[]" value="1">
                                         <input type="hidden" name="budget_item[id][]" value="{{ @$budget_item->id }}">
-                                        <input type="hidden" name="budget_item[budgetable_id][]"
+                                        <input type="hidden" name="budget_item[rec_c_application_id][]"
                                             value="{{ @$record->id }}">
-                                        <input type="hidden" name="budget_item[budgetable_type][]"
-                                            value="{{ (new $appMorphModel())->getTable() }}">
+                                        {{-- <input type="hidden" name="budget_item[budgetable_type][]"
+                                            value="{{ (new $appMorphModel())->getTable() }}"> --}}
                                     </td>
                                     <td>
                                         {{ Form::text('budget_item[item_name][]', @$budget_item->item_name, ['class' => 'form-control']) }}
                                     </td>
                                     <td>
                                         <div class="clearfix">
-                                            {{ Form::select('budget_item[stp_unit_measure_id][]', @$unit_measures, @$budget_item->stp_unit_measure_id, ['class' => 'form-control', 'required']) }}
+                                            {{ Form::select('budget_item[unit_measure][]', @$unit_measures, @$budget_item->unit_measure, ['class' => 'form-control', 'required']) }}
                                         </div>
                                     </td>
                                     <td>
@@ -252,7 +252,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                     </td>
 
                                     <td>
-                                        {{ Form::textarea('budget_item[comment][]', @$budget_item->comment, ['class' => 'form-control', 'rows' => 2]) }}
+                                        {{ Form::textarea('budget_item[comments][]', @$budget_item->comments, ['class' => 'form-control', 'rows' => 2]) }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -332,7 +332,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                 <span class="lbl"></span>
                                 <input type="hidden" name="sales_projection_count[]" value="1">
                                 <input type="hidden" name="sales_projection[id][]" value="">
-                                <input type="hidden" name="sales_projection[pwd_grp_b_applic_main_id][]"
+                                <input type="hidden" name="sales_projection[rec_c_application_id][]"
                                     value="{{ @$record->id }}">
                             </td>
                             <td>
@@ -359,7 +359,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                                         <input type="hidden" name="sales_projection_count[]" value="1">
                                         <input type="hidden" name="sales_projection[id][]"
                                             value="{{ @$projection->id }}">
-                                        <input type="hidden" name="sales_projection[pwd_grp_b_applic_main_id][]"
+                                        <input type="hidden" name="sales_projection[rec_c_application_id][]"
                                             value="{{ @$record->id }}">
                                     </td>
                                     <td>

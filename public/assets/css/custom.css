@@ -1224,3 +1224,9 @@ tr td:not(:last-child) .dt-actions .actions-list::after {
 .actions-list a.danger span {
     color: #ffa65b !important;
 }
+
+
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control, .select2-search input[type=text][disabled], .select2-search input[type=text][readonly], fieldset[disabled] .select2-search input[type=text]{
+    color: #575858 !important;
+}
