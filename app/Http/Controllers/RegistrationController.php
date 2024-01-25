@@ -22,7 +22,7 @@ class RegistrationController extends Controller
         // $this->module_path = GeneralHelper::DashboardPath('');
     }
 
-    public function opregistration(ViewOldPersonDataTable $dataTable)
+    public function index(ViewOldPersonDataTable $dataTable)
     {
         $data['title']    = "OP Registration";
 

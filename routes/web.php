@@ -124,7 +124,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             function () {
                 Route::get('op-registration', [RegistrationController::class, 'opregistration'])->name('op-registration');
                 Route::get('old-persons-form', [RegistrationController::class, 'oldPersonsForm'])->name('old-persons-form');
-                Route::get('group-registration', [RegistrationController::class, 'group_registration'])->name('group_registration');
+                Route::get('group-registration', [RegistrationController::class, 'index'])->name('group_registration');
             }
         );
 
