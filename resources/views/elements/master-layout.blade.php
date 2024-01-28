@@ -119,13 +119,13 @@ License: For each use you must have a valid license purchased only from above li
 
                 <!--begin::Toolbar-->
                 @auth
-                    @include('elements.toolbar')
+                    {{-- @include('elements.toolbar') --}}
                 @endauth
                 <!--end::Toolbar-->
                 <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <div class="content d-flex flex-column flex-column-fluid mt-md-n20" id="kt_content">
                     <!--begin::Container-->
-                    <div id="kt_content_container" class="container-xxl">
+                    <div id="kt_content_container" class="container-xxl- {{ auth()->user() ? 'pe-6 ps-6' : '' }}">
                         @yield('content')
                     </div>
                     <!--end::Container-->

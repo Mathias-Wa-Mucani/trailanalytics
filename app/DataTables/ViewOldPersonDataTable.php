@@ -63,10 +63,7 @@ class ViewOldPersonDataTable extends DataTable
         return $this->builder()
             ->setTableId('registration-table')
             ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->addAction([
-                'buttons' => ['Edit', 'Delete'],
-            ]);
+            ->minifiedAjax();
     }
 
     /**

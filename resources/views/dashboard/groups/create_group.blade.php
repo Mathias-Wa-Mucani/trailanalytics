@@ -57,7 +57,7 @@ $members = \App\Models\OldPerson::all();
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mt-2">
-                    {{ Form::text('r_fld[tin]', @$record->tin, ['class' => 'form-control tin_number', 'placeholder' => ' ']) }}
+                    {{ Form::text('r_fld[tin]', @$record->tin, ['class' => 'form-control tin_number draft', 'placeholder' => ' ', 'data-is-required' => 1]) }}
                     {{ Form::label('', 'TIN', ['class' => '']) }}
                 </div>
             </div>
@@ -65,13 +65,13 @@ $members = \App\Models\OldPerson::all();
             <div class="col-md-6">
                 {{ Form::label('', 'Is Home', ['class' => '']) }} <br>
                 <div class="form-check form-check-inline mt-4">
-                    <input class="form-check-input" type="radio" name="r_fld[is_home]" id="is_home" value="1"
-                        required {{ @$record->is_home ? 'checked' : '' }}>
+                    <input class="form-check-input  draft" type="radio" name="r_fld[is_home]" id="is_home"
+                        value="1" {{ @$record->is_home ? 'checked' : '' }} data-is-required=1>
                     <label class="form-check-label" for="is_home">Yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="r_fld[is_home]" id="is_not_home" value="0"
-                        required {{ @$record->is_home === false ? 'checked' : '' }}>
+                    <input class="form-check-input  draft" type="radio" name="r_fld[is_home]" id="is_not_home"
+                        value="0" {{ @$record->is_home === false ? 'checked' : '' }} data-is-required=1>
                     <label class="form-check-label" for="is_not_home">No</label>
                 </div>
             </div>
@@ -81,7 +81,7 @@ $members = \App\Models\OldPerson::all();
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating">
-                    {{ Form::text('r_fld[date_established]', @$record->date_established, ['class' => 'form-control datepicker', 'placeholder' => ' ', 'required']) }}
+                    {{ Form::text('r_fld[date_established]', @$record->date_established, ['class' => 'form-control datepicker  draft', 'placeholder' => ' ', 'data-is-required' => 1]) }}
                     {{ Form::label('', 'Date of Establishment', ['class' => 'required-field']) }}
                 </div>
             </div>
@@ -95,7 +95,7 @@ $members = \App\Models\OldPerson::all();
             </div>
         </div>
 
-        @include('dashboard.partials.location_template')
+        @include('dashboard.partials.location_template', ['is_required' => true])
 
         <div class="row mt-4">
             <div class="col-md-6">
@@ -103,8 +103,8 @@ $members = \App\Models\OldPerson::all();
                 <div class="mb-8">
                     <!--begin::address-->
                     <div class="form-floating">
-                        <input name="r_fld_[address]" id="address" class="form-control draft" required- placeholder=" "
-                            data-is-required="1" value="{{ @$record->address }}">
+                        <input name="r_fld_[address]" id="address" class="form-control draft" required-
+                            placeholder=" " data-is-required="1" value="{{ @$record->address }}">
                         <label for="">Physical Address</label>
                     </div>
                 </div>
@@ -233,7 +233,7 @@ $members = \App\Models\OldPerson::all();
                     <div class="form-floating">
                         <input type="text" name="contact_info[contact_pri_telephone]" id="pri_telephone"
                             class="form-control form-control-sm bg-transparent phone_number draft" placeholder=" "
-                            value="{{ @$record->contact_pri_telephone }}">
+                            value="{{ @$record->contact_pri_telephone }}" data-is-required="1">
                         <label for="">Primary Telephone</label>
                         <!--end::pri_contact-->
                     </div>
@@ -280,7 +280,7 @@ $members = \App\Models\OldPerson::all();
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating mt-2">
-                    {{ Form::select('r_fld[stp_bank_id]', $banks, @$record->stp_bank_id, ['class' => 'form-control', 'placeholder' => ' ', 'required']) }}
+                    {{ Form::select('r_fld[stp_bank_id]', $banks, @$record->stp_bank_id, ['class' => 'form-control draft', 'placeholder' => ' ', 'data-is-required']) }}
                     <label for="">Bank<span
                             class='text-danger font-weight-bolder font-size-lg'>*</span></label>
                 </div>
@@ -290,7 +290,7 @@ $members = \App\Models\OldPerson::all();
                 <div class="form-floating mt-2">
                     <input type="text" name="r_fld[account_name]"
                         class="form-control form-control-sm bg-transparent draft" placeholder=" "
-                        value="{{ @$record->account_name }}" required>
+                        value="{{ @$record->account_name }}" data-is-required="1">
                     <label for="">Account Name<span class='text-danger font-weight-bolder'>*</span></label>
                 </div>
             </div>
@@ -302,7 +302,7 @@ $members = \App\Models\OldPerson::all();
                 <div class="form-floating mt-2">
                     <input type="text" name="r_fld[account_number]"
                         class="form-control form-control-sm bg-transparent draft" placeholder=" "
-                        value="{{ @$record->account_number }}" required>
+                        value="{{ @$record->account_number }}" data-is-required="1">
                     <label for="">Account Number<span class='text-danger font-weight-bolder'>*</span></label>
                 </div>
             </div>
@@ -310,7 +310,7 @@ $members = \App\Models\OldPerson::all();
                 <div class="form-floating mt-2">
                     <input type="text" name="r_fld[account_branch]"
                         class="form-control form-control-sm bg-transparent draft" placeholder=" "
-                        value="{{ @$record->account_branch }}" required>
+                        value="{{ @$record->account_branch }}" data-is-required="1">
                     <label for="">Account Branch<span class='text-danger font-weight-bolder'>*</span></label>
                 </div>
             </div>
@@ -358,7 +358,7 @@ $members = \App\Models\OldPerson::all();
                     Photograph:
                 </span>
 
-                {{ Form::file('documents_[group_photograph]', ['class' => 'input-file image_doc_file', @$record ? '' : 'required']) }}
+                {{ Form::file('documents_[group_photograph]', ['class' => 'input-file image_doc_file draft', @$record ? '' : 'data-is-required' => 1]) }}
                 <p class="mt-4 highlight-orange fs-6">
                     <i>
                         {{ __('Only Images (png, jpeg, jpg) or maximum ' . MAX_FILE_UPLOAD_SIZE_MBS . 'mb') }}
@@ -382,7 +382,7 @@ $members = \App\Models\OldPerson::all();
                     Minutes of Beneficiary Selection Meeting:
                 </span>
 
-                {{ Form::file('documents[beneficiary_selection_meeting_minutes]', ['class' => 'input-file image_doc_file', @$record ? '' : 'required']) }}
+                {{ Form::file('documents[beneficiary_selection_meeting_minutes]', ['class' => 'input-file image_doc_file  draft', @$record ? '' : 'data-is-required' => 1]) }}
                 <p class="mt-4 highlight-orange fs-6">
                     <i>
                         {{ __('Only PDF and Images - maximum ' . MAX_FILE_UPLOAD_SIZE_MBS . 'mb') }}

@@ -3,26 +3,22 @@
 @section('content')
     <!--begin::Row-->
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title alert alert-primary my-auto w-50"
-                        style="height: 30px; line-height:30px; paddingX:0px 15px">List of Applications </h3>
 
-                    <a href="{{ route('module.create', ['Module' => 'applications', 'Section' => 'application', 'Model' => 'OldPersonApplication']) }}"
-                        class="dynamic-modal btn btn-sm btn-primary fw-bold" data-modal-target="modal-large"
-                        title="Create Older Persons Application">
-                        <i class="fa fa-plus fa-lg fa fa-menu"></i> Add Application
-                    </a>
-                </div>
+        @includeIf('dashboard.partials.page_header', [
+            'new_record' => true,
+            'route' => route('module.create', [
+                'Module' => 'applications',
+                'Model' => 'OldPersonApplication',
+                'Section' => 'application',
+            ]),
+            'btnText' => 'Add Application',
+            'btnTitle' => 'Add Application',
+            'page_title' => 'List of Applications',
+            'modal' => 'modal-large',
+        ])
 
-                <div class="card-body table-responsive">
-                    <div class="col-md-12">
-                        {{ $dataTable->table(['class' => 'table table-bordered table-striped table-hover']) }}
-                    </div>
-                </div>
-
-            </div>
+        <div class="col-md-12">
+            {{ $dataTable->table(['class' => 'table table-bordered table-striped table-hover']) }}
         </div>
     </div>
     <!--end::Row-->

@@ -19,12 +19,17 @@ $village_field = 'vcode' ?? @$village_field;
 
 // dd(@$record->village);
 
+$draft = 'draft';
+if (@$is_required) {
+    $draft = '';
+}
+
 ?>
 
 <div class="row">
     <div class="col-md-6 mt-4">
         <div class="form-floating">
-            {{ Form::select('district_id', $districts->pluck('district', 'dcode')->prepend('select', ''), @$record->village->dcode, ['class' => 'form-select form-select-sm location_selection District w-100 draft', 'data-control' => '', 'required', 'data-selection-target-model' => 'County', 'data-filter-field' => 'dcode', 'data-required-label' => 'District', 'data-is-required' => 1]) }}
+            {{ Form::select('district_id', $districts->pluck('district', 'dcode')->prepend('select', ''), @$record->village->dcode, ['class' => 'form-select form-select-sm location_selection District w-100 '.$draft, 'data-control' => '', 'required', 'data-selection-target-model' => 'County', 'data-filter-field' => 'dcode', 'data-required-label' => 'District', 'data-is-required' => 1]) }}
             {{ Form::label('parentDistrict', @$district_text, ['class' => 'required-field']) }}
         </div>
     </div>

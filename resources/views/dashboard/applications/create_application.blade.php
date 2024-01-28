@@ -107,13 +107,13 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="form-floating">
-                    {{ Form::text('r_fld[est_total_cost]', GeneralHelper::to_money_format(@$record->est_total_cost), ['class' => 'form-control comma_separated', 'required']) }}
+                    {{ Form::text('r_fld[est_total_cost]', GeneralHelper::to_money_format(@$record->est_total_cost), ['class' => 'form-control comma_separated draft', 'data-is-required' => 1]) }}
                     {{ Form::label('surname', 'Estimated Total Cost ( in UGX ONLY )', ['class' => 'required-field']) }}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    {{ Form::number('r_fld[implementation_period]', @$record->implementation_period, ['class' => 'form-control', 'required']) }}
+                    {{ Form::number('r_fld[implementation_period]', @$record->implementation_period, ['class' => 'form-control draft', 'data-is-required' => 1]) }}
                     {{ Form::label('surname', 'Estimated Implementation Period (in months ONLY )', ['class' => 'required-field']) }}
                 </div>
             </div>
@@ -151,7 +151,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                     Minutes:
                 </span>
 
-                {{ Form::file('documents[meeting_minutes]', ['class' => 'input-file image_doc_file', @$record ? '' : 'required']) }}
+                {{ Form::file('documents[meeting_minutes]', ['class' => 'input-file image_doc_file draft', @$record ? '' : 'data-is-required' => 1]) }}
                 <p>
                     @if (@$record_ && GeneralHelper::getDocLocation(@$record, 'meeting_minutes'))
                         <a class="text-bold" href="{{ GeneralHelper::getDocLocation(@$record, 'meeting_minutes') }}"
@@ -287,7 +287,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    {{ Form::text('r_fld[financial_contribution]', GeneralHelper::to_money_format(@$record->financial_contribution), ['class' => 'form-control comma_separated financial_group_contribution', 'required']) }}
+                    {{ Form::text('r_fld[financial_contribution]', GeneralHelper::to_money_format(@$record->financial_contribution), ['class' => 'form-control comma_separated financial_group_contribution draft', 'data-is-required' => 1]) }}
                     {{ Form::label('financial_contribution', '2. What is the financial contribution of the group?', ['class' => 'col-form-label required-field']) }}
                 </div>
             </div>
@@ -296,14 +296,14 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
         <div class="form-group row">
             <div class="col-md-6">
                 <div class="form-floating">
-                    {{ Form::text('r_fld[requested_amount]', GeneralHelper::to_money_format(@$record->requested_amount), ['class' => 'form-control comma_separated amount_borrowed', 'required', 'readonly']) }}
+                    {{ Form::text('r_fld[requested_amount]', GeneralHelper::to_money_format(@$record->requested_amount), ['class' => 'form-control comma_separated amount_borrowed draft', 'data-is-required' => 1, 'readonly']) }}
                     {{ Form::label('borrowed', '3. How much do you wish to borrow?', ['class' => 'col-form-label required-field']) }}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
                     {{ Form::label('non_financial_contribution', '4. What is the non-financial contribution of the group?', ['class' => 'col-form-label required-field']) }}
-                    {{ Form::textarea('r_fld[non_financial_contribution]', @$record->non_financial_contribution, ['class' => 'form-control', 'rows' => 4, 'required']) }}
+                    {{ Form::textarea('r_fld[non_financial_contribution]', @$record->non_financial_contribution, ['class' => 'form-control draft', 'rows' => 4, 'data-is-required' => 1]) }}
                 </div>
             </div>
         </div>
@@ -494,7 +494,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
                     received, etc
                 </span>
 
-                {{ Form::textarea('r_fld[preparedness]', @$record->preparedness, ['class' => 'form-control', 'rows' => 3, 'required']) }}
+                {{ Form::textarea('r_fld[preparedness]', @$record->preparedness, ['class' => 'form-control draft', 'rows' => 3, 'data-is-required' => 1]) }}
             </div>
         </div>
 
