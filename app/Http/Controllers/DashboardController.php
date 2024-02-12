@@ -52,7 +52,8 @@ class DashboardController extends Controller
 
         // $adminsRes =  $jsonResponseAdmins['geoLocationsMasterList'];
         // return $adminsRes;
-
-        return $this->view('dashboard.index');
+        $data['time_ins']  = DB::table('clocking')->where('user_id', Auth::user()->id)->where('time_out', null)->orderBy('id', 'ASC')->limit(1)->get();
+            // return print_r($data);
+        return $this->view('dashboard.index', $data);
     }
 }

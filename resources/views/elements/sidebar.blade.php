@@ -3,8 +3,8 @@
 use App\Models\MainMenu;
 use App\Models\SubMenu;
 
-$mainmenus = MainMenu::all();
-$submenus = SubMenu::all();
+// $mainmenus = MainMenu::all();
+// $submenus = SubMenu::all();
 
 ?>
 
@@ -36,7 +36,7 @@ $submenus = SubMenu::all();
                         class="menu-item herex {{ $index == 0 ? 'show' : '' }} py-2">
                         <!--begin:Menu link-->
                         <span class="menu-link menu-center">
-                            <span class="menu-icon me-0 {{ $main->icons }} fa-lg">
+                            <span class="menu-icon me-0 {{ $main->icon }} fa-lg">
                                 <i class="ki-outline   fs-2x"></i>
                             </span>
                             <span class="menu-title">{{ $main->name }}</span>

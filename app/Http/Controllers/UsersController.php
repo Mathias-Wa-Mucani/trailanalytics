@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class ReportController extends Controller
+class UsersController extends Controller
 {
 
     public $module_path;
@@ -17,15 +17,15 @@ class ReportController extends Controller
         // $this->module_path = GeneralHelper::DashboardPath('');
     }
 
-    public function report()
+    public function index()
     {
         if (Auth::id() == 1) {
-            $data['users'] = DB::table('users')->get();
+            $data['users'] = DB::table('user_details')->get();
         } else {
-            $data['users'] = DB::table('users')->where('id', Auth::id())->get();
+            $data['users'] = DB::table('user_details')->where('id', Auth::id())->get();
         }
 
-        return $this->view('dashboard.reports.index', $data);
+        return $this->view('dashboard.users.index', $data);
 
     }
     public function get_user_clocking_details(Request $request)

@@ -8,10 +8,10 @@
             var ActiveUser = $(this)[0].id;
 
             $('.user-details' + ActiveUser).css('background', '#007bff');
-            $('.user-details' ).not($('.user-details' + ActiveUser)).css('background', '');
+            $('.clicked-user' ).not($('.user-details' + ActiveUser)).css('background', '');
 
-            $('.user-details').not($('.user-details' + ActiveUser)).removeClass('active'); //remove active class from all other a tags except clicked one
-            $('.user-details' + ActiveUser).addClass('active');
+            // $('.user-details').not($('.user-details' + ActiveUser)).removeClass('active'); //remove active class from all other a tags except clicked one
+            // $('.user-details' + ActiveUser).addClass('active');
 
             // console.log(activeAnchor);
             user_id = $(this)[0].id;

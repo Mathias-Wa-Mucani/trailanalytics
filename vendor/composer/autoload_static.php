@@ -214,9 +214,9 @@ class ComposerStaticInitedf7159f50519f30b6e6bb11f7b8d28c
         ),
         'Yajra\\DataTables\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
-            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -360,8 +360,8 @@ class ComposerStaticInitedf7159f50519f30b6e6bb11f7b8d28c
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -632,6 +632,7 @@ class ComposerStaticInitedf7159f50519f30b6e6bb11f7b8d28c
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\ClockingController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClockingController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DmisController' => __DIR__ . '/../..' . '/app/Http/Controllers/DmisController.php',
@@ -643,6 +644,7 @@ class ComposerStaticInitedf7159f50519f30b6e6bb11f7b8d28c
         'App\\Http\\Controllers\\ModelControllerMap' => __DIR__ . '/../..' . '/app/Http/Controllers/ModelControllerMap.php',
         'App\\Http\\Controllers\\ModuleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModuleController.php',
         'App\\Http\\Controllers\\RegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrationController.php',
+        'App\\Http\\Controllers\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportController.php',
         'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -655,6 +657,7 @@ class ComposerStaticInitedf7159f50519f30b6e6bb11f7b8d28c
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Bank' => __DIR__ . '/../..' . '/app/Models/Bank.php',
         'App\\Models\\BudgetItem' => __DIR__ . '/../..' . '/app/Models/BudgetItem.php',
+        'App\\Models\\Clocking' => __DIR__ . '/../..' . '/app/Models/Clocking.php',
         'App\\Models\\County' => __DIR__ . '/../..' . '/app/Models/County.php',
         'App\\Models\\DeleteReason' => __DIR__ . '/../..' . '/app/Models/DeleteReason.php',
         'App\\Models\\District' => __DIR__ . '/../..' . '/app/Models/District.php',

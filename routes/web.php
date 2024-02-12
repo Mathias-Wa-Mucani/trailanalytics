@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UsersController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('time-out', [ClockingController::class, 'time_out'])->name('time-out');
         Route::get('report', [ReportController::class, 'report'])->name('report');
         Route::post('get-user-clocking-details', [ReportController::class, 'get_user_clocking_details'])->name('get-user-clocking-details');
+        Route::get('manage-users', [UsersController::class, 'index'])->name('manage-users');
 
         /**
          * Custom CRUD routes 
