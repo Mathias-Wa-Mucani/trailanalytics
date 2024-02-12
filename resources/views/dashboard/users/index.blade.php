@@ -35,12 +35,13 @@ TrailAnalytics|User Panel
                                 <? $i =1;?>
                                 @foreach ($users as $user)
                                 <tr>
+                                    <td class="d-none user_id">{{$user->id}}</td>
                                     <td>{{$i}}</td>
-                                    <td>{{$user->name}}</td>
+                                    <td class="clickable_user"><a href="javascript:void(0)">{{$user->name}}</a></td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role_name}}</td>
                                     <td>{{ date('D, d/M/y ', strtotime($user->created_at)) }}</td>
-                                    <td><button class="btn btn-sm btn-danger fa fa-trash"> Delete</button></td>
+                                    <td><button class="btn btn-sm btn-danger fa fa-trash btnDeleteUser"> Delete</button></td>
 
                                 </tr>
                                 <? $i++ ;?>

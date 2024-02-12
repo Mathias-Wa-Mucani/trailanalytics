@@ -19,7 +19,7 @@ class ReportController extends Controller
 
     public function report()
     {
-        if (Auth::id() == 1) {
+        if (Auth::user()->role_id == 1) {
             $data['users'] = DB::table('users')->get();
         } else {
             $data['users'] = DB::table('users')->where('id', Auth::id())->get();

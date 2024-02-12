@@ -105,9 +105,9 @@ License: For each use you must have a valid license purchased only from above li
         <div class="page d-flex flex-row flex-column-fluid">
 
             <!--begin::Aside-->
-            @auth
+            @if (Auth::check())
                 @include('elements.sidebar')
-            @endauth
+            @endif
 
             <!--end::Aside-->
             <!--begin::Wrapper-->

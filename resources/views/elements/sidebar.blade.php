@@ -3,8 +3,8 @@
 use App\Models\MainMenu;
 use App\Models\SubMenu;
 
-// $mainmenus = MainMenu::all();
-// $submenus = SubMenu::all();
+// $mainmenus2 = MainMenu::all();
+// $submenus2 = SubMenu::all();
 
 ?>
 
