@@ -1,6 +1,6 @@
 @extends('elements.master-layout')
 @section('title')
-    SEGOP|Login
+    TrailAnalytics|Login
 @endsection
 
 {{-- start main content --}}
@@ -28,11 +28,11 @@
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
                 <a href="javascript:;" class="mb-7">
-                    <img alt="Logo" class="img-fluid" src="{{ asset('public/assets/media/logos/logo.jpg') }}" />
+                    <img alt="Logo" class="img-fluid" src="{{ asset('public/assets/media/logos/trail_banner.png') }}" />
                 </a>
                 <!--end::Logo-->
                 <!--begin::Title-->
-                <h2 class="text-white fw-normal m-0 mx-auto">SEGOP</h2>
+                <h2 class="text-white fw-normal m-0 mx-auto">Trail Analytics</h2>
                 <!--end::Title-->
             </div>
             <!--begin::Aside-->
@@ -135,7 +135,7 @@
                         <!--begin::Wrapper-->
                         <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
                             <div>
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                <input classx="form-check-input" type="checkbox" name="remember" id="remember"
                                     {{ old('remember') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="remember">

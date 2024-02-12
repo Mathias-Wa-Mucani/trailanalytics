@@ -40,7 +40,7 @@ $banks = \App\Models\Bank::pluck('name', 'dmis_bank_id')->prepend('Select', '');
         <div class="row">
             <div class="col-md-6">
                 <div class="form-floating">
-                    <select name="r_fld[rec_b_group_id]" class="form-control" required>
+                    <select name="r_fld[rec_b_group_id]" class="form-select" required>
                         <option value=""></option>
                         @foreach ($groups as $group)
                             <option value="{{ $group->id }}"

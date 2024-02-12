@@ -1,4 +1,7 @@
 @extends('elements.master-layout')
+@section('title')
+    SEGOP|Application
+@endsection
 {{-- start main content --}}
 @section('content')
     <!--begin::Row-->

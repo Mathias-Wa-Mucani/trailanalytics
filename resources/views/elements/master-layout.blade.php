@@ -16,6 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8" />
     <meta name="description" content="SEGOP" />
     <meta name="keywords" content="SEGOP" />
@@ -26,7 +27,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Metronic by Keenthemes" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{ asset('public/assets/media/logos/logo.jpg') }}" />
+    <link rel="shortcut icon" href="{{ asset('public/assets/media/logos/trail_banner.png') }}" />
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 
     <!--begin::Fonts(mandatory for all pages)-->
@@ -45,7 +46,7 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet" /> --}}
 
     {{-- <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet"> --}}
     <link class="js-stylesheet" href="{{ asset('public/assets/datatables/dataTables.bootstrap4.min.css') }}"
@@ -55,7 +56,7 @@ License: For each use you must have a valid license purchased only from above li
     <link class="js-stylesheet" href="{{ asset('public/assets/css/sweetalert2.min.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('public/assets/flatpickr/flatpickr.bundle.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('public/assets/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet">
+    {{-- <link class="js-stylesheet" href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet"> --}}
 
     <!-- Select2 -->
     <link hrefx="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -63,7 +64,7 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet" /> --}}
 
 
     <script>
@@ -123,7 +124,7 @@ License: For each use you must have a valid license purchased only from above li
                 @endauth
                 <!--end::Toolbar-->
                 <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid mt-md-n20" id="kt_content">
+                <div class="content d-flex flex-column flex-column-fluid mt-md-n20" style="background-color: #F2F3F7"  id="kt_content">
                     <!--begin::Container-->
                     <div id="kt_content_container" class="container-xxl- {{ auth()->user() ? 'pe-6 ps-6' : '' }}">
                         @yield('content')

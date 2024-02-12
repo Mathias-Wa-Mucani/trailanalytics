@@ -16,7 +16,7 @@ $submenus = SubMenu::all();
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{ route('dashboard') }}" class="d-flex align-items-center">
-            <img alt="Logo" src="{{ asset('public/assets/media/logos/logo.jpg') }}" class="h-45px logo" />
+            <img alt="Logo" src="{{ asset('public/assets/media/logos/trail_banner.png') }}" class="h-45px logo" />
         </a>
         <!--end::Logo-->
     </div>

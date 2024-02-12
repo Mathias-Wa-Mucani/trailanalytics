@@ -11,6 +11,8 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Page3Controller;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ClockingController;
+use App\Http\Controllers\ReportController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +48,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('import-dmis-data', [DmisController::class, 'import_dmis_data']);
         Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('time-in', [ClockingController::class, 'time_in'])->name('time-in');
+        Route::post('time-out', [ClockingController::class, 'time_out'])->name('time-out');
+        Route::get('report', [ReportController::class, 'report'])->name('report');
+        Route::post('get-user-clocking-details', [ReportController::class, 'get_user_clocking_details'])->name('get-user-clocking-details');
+
         /**
          * Custom CRUD routes 
          */
@@ -106,7 +113,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         foreach ($submenus as $submenu) {
             if ($submenu->route != "") {
-                Route::get($submenu->route, [strtok($submenu->url, '/') . '::class' . explode('/', $submenu->url)[1], $submenu->route])->name($submenu->route);
+                // Routsse::get($submenu->route, [strtok($submenu->url, '/') . '::class' . explode('/', $submenu->url)[1], $submenu->route])->name($submenu->route);
             }
 
             // Route::get($submenu->route, [strtok($submenu->url , '/') . '::class' .explode('/', $submenu->url  )[1], $submenu->route])->name($submenu->route);
@@ -153,7 +160,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             }
         );
 
-        // Route::get('page3', [Page3Controller::class, 'page3'])->name('page3');
 
     });
 });

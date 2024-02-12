@@ -4,7 +4,7 @@
         <!--begin::Copyright-->
         <div class="text-gray-900 order-2 order-md-1">
             <span class="text-muted fw-semibold me-1">{{ date('Y') }}&copy;</span>
-            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">SEGOP</a>
+            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">TrailAnalytics</a>
         </div>
         <!--end::Copyright-->
         <!--begin::Menu-->
