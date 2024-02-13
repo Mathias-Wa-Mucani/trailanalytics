@@ -133,7 +133,7 @@ class UsersController extends Controller
         $githubUser = Socialite::driver('github')->user();
         // dd($githubUser);
         $user = User::updateOrCreate([
-            'email' => $githubUser->id,
+            'email' => $githubUser->email,
         ], [
             'name' => $githubUser->name,
             'email' => $githubUser->email,
