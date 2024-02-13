@@ -124,7 +124,7 @@ License: For each use you must have a valid license purchased only from above li
                 @endauth
                 <!--end::Toolbar-->
                 <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid mt-md-n20" style="background-color: #F2F3F7"  id="kt_content">
+                <div class="content d-flex flex-column flex-column-fluid mt-md-n20" stylex="background-color: #F2F3F7"  id="kt_content">
                     <!--begin::Container-->
                     <div id="kt_content_container" class="container-xxl- {{ auth()->user() ? 'pe-6 ps-6' : '' }}">
                         @yield('content')
