@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Response;
+use Str;
+use Laravel\Socialite\Facades\Socialite;
+
 
 class UsersController extends Controller
 {
@@ -116,6 +119,33 @@ class UsersController extends Controller
         }
 
 
+
+    }
+
+    public function auth_github(Request $request)
+    {
+        return Socialite::driver('github')->redirect();
+
+    }
+    public function auth_github_callback()
+    {
+        // return 'auth callback';
+        $githubUser = Socialite::driver('github')->user();
+        // dd($githubUser);
+        $user = User::updateOrCreate([
+            'email' => $githubUser->id,
+        ], [
+            'name' => $githubUser->name,
+            'email' => $githubUser->email,
+            'avatar' => $githubUser->avatar,
+            'password' => Hash::make(Str::random(24)),
+            // 'github_token' => $githubUser->token,
+            // 'github_refresh_token' => $githubUser->refreshToken,
+        ]);
+
+        Auth::login($user);
+
+        return redirect('/dashboard');
 
     }
 

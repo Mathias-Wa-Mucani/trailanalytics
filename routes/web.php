@@ -5,11 +5,14 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClockingController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UsersController;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
 
 
 /*
@@ -34,6 +37,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+ 
+Route::get('auth-github', [App\Http\Controllers\UsersController::class, 'auth_github'])->name('auth-github');
+Route::get('auth-github-callback', [App\Http\Controllers\UsersController::class, 'auth_github_callback'])->name('auth-github-callback');
+
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('role:' . RolePermission::ROLE_SYSTEM_ADMINISTRATOR);
