@@ -15,7 +15,7 @@ TrailAnalytics|User Panel
                 <button class="btn btn-sm fa fa-plus btn-success float-end" id="btnLoadAddUserModal"> Add User</button>
             </div>
             <div class="col-lg-3 my-auto">
-            <a href="{{route('export-users-topdf')}}" class="btn btn-sm btn-primary float-end fa fa-file-pdf"> Export to
+            <a href="{{route('export-users-topdf')}}" target="_blank" class="btn btn-sm btn-primary float-end fa fa-file-pdf"> Export to
                 pdf </a>
 
         </div>
