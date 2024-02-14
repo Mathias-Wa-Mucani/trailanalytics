@@ -1,11 +1,9 @@
 @if (count($clocking_details) > 0)
 <div class="">
-    @if($clocking_details[0]->user_id != null)
-    <a href="" class="btn btn-primary btn-sm float-end fa fa-file-pdf ">Export to PDF</a>
-    @endif
+    <a target="_blank" href="{{route('export-user-report-pdf', $clocking_details[0]->user_id)}}" class="btn btn-primary btn-sm float-end fa fa-file-pdf ">Export to PDF</a>
 </div><br><br>
 <div class="table-responsive">
-    <input type="text" value="{{$clocking_details[0]->user_id}}">
+    <input type="hidden" value="{{$clocking_details[0]->user_id}}">
     <table class="table table-hover table-bordered">
         <thead>
             <tr>

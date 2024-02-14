@@ -6,7 +6,7 @@ use App\Models\Clocking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 class ReportController extends Controller
 {
 
@@ -34,6 +34,17 @@ class ReportController extends Controller
 
         return $this->view('dashboard.reports.clocking-details', $data);
 
+    }
+
+    public function create_PDF($user_id)
+    {
+        // return print_r($user_id);
+        // retreive all records from db
+        $data['clocking_details'] = DB::table('clocking')->join('user_details', 'clocking.user_id', '=', 'user_details.id')->select('clocking.*', 'user_details.*')->where('clocking.user_id', $user_id)->get();
+        // dd($data);
+        $pdf = PDF::loadView('dashboard.reports.PDF.user-report', $data);
+        // download PDF file with download method
+        return $pdf->stream("users.pdf", array("Attachment" => false));
     }
 
 
