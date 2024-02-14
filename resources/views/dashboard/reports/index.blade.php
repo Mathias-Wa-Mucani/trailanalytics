@@ -24,6 +24,8 @@ TrailAnalytics|Reports
                         </div>
 
                     </li>
+                    <div class="divider py-1 bg-secondary"></div>
+
                     @endforeach
                 </ul>
             </div>
