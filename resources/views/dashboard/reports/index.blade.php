@@ -15,7 +15,7 @@ TrailAnalytics|Reports
 
                     @foreach ($users as $user)
                     <li class="navi-item clickable-user clickable-user{{ $user->id }}" id="{{ $user->id }}">
-                        <div class="clicked-user user-details{{ $user->id }} px-4">
+                        <div class="clicked-user py-2 user-details{{ $user->id }} px-4">
                             <a class="navi-link activex" data-toggle="tab" href="javascript:void">
                                 <span class="navi-icon"><i class="flaticon-avatar"></i></span>
                                 <h5 class="navi-text">{{ $user->name }}</h5>
