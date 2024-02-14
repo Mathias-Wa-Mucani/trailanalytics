@@ -18,12 +18,12 @@ License: For each use you must have a valid license purchased only from above li
     <title>@yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8" />
-    <meta name="description" content="SEGOP" />
-    <meta name="keywords" content="SEGOP" />
+    <meta name="description" content="Trail Analytics" />
+    <meta name="keywords" content="Trail Analytics" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="SEGOP" />
+    <meta property="og:title" content="Trail Analytics" />
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Metronic by Keenthemes" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
