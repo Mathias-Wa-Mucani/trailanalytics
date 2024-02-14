@@ -8,19 +8,22 @@ TrailAnalytics|User Panel
 <div class="row">
     <div class="card">
         <div class="card-header">
-            <div class="col-lg-6 my-auto">
+            <div class="col-lg-3 my-auto">
                 <h3>Users</h3>
             </div>
             <div class="col-lg-3 my-auto">
                 <button class="btn btn-sm fa fa-plus btn-success float-end" id="btnLoadAddUserModal"> Add User</button>
             </div>
             <div class="col-lg-3 my-auto">
-            <a href="{{route('export-users-topdf')}}" target="_blank" class="btn btn-sm btn-primary float-end fa fa-file-pdf"> Export to
-                pdf </a>
+                <a href="{{route('export-users-topdf')}}" target="_blank"
+                    class="btn btn-sm btn-primary float-end fa fa-file-pdf"> Export to PDF </a>
+            </div>
+            <div class="col-lg-3 my-auto">
+                <a href="{{route('export-users-tocsv')}}" 
+                    class="btn btn-sm btn-warning float-end fa fa-file-csv"> Export to CSV </a>
+            </div>
+        </div>
 
-        </div>
-        </div>
-       
         <div class="card-body">
 
             <div class="row">

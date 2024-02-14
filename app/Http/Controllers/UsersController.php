@@ -176,19 +176,43 @@ class UsersController extends Controller
 
     }
 
-     // Generate PDF
-     public function create_PDF() {
+    // Generate PDF
+    public function create_PDF()
+    {
         // retreive all records from db
         $data['users'] = DB::table('user_details')->get();
         // $data['users'] = User::all();
-        // share data to view
-        // view()->share('users', $users);
-        $pdf = PDF::loadView('dashboard.users.PDF.users',$data);
-        // PDF::loadView('my-actual-view',compact('data'))->output()
 
+        $pdf = PDF::loadView('dashboard.users.PDF.users', $data);
         // download PDF file with download method
-        return $pdf->stream( "users.pdf", array("Attachment" => false));
-      }
+        return $pdf->stream("users.pdf", array("Attachment" => false));
+    }
+
+    // export all products to csv file
+    public function create_CSV()
+    {
+        $users = DB::table('user_details')->get();
+        // return print_r($data);
+        $filename = 'Users list as of ' . date('Y-m-d').".csv";
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ];
+
+        $handle = fopen('php://output', 'w');
+        fputcsv($handle, ['Name', 'Email', 'Role', 'Create Date']); // Add more headers as needed
+
+        foreach ($users as $user) {
+            fputcsv($handle, [$user->name, $user->email, $user->role_name, $user->created_at]); // Add more fields as needed
+        }
+
+        fclose($handle);
+
+        return Response::make('', 200, $headers);
+
+
+    }
 
 
 

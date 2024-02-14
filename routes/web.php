@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('save-user', [UsersController::class, 'save_user'])->name('save-user');
         Route::post('delete-user', [UsersController::class, 'delete_user'])->name('delete-user');
         Route::get('export-users-topdf', [UsersController::class, 'create_PDF'])->name('export-users-topdf');
+        Route::get('export-users-tocsv', [UsersController::class, 'create_CSV'])->name('export-users-tocsv');
 
         
     });
