@@ -11,11 +11,18 @@ TrailAnalytics|User Panel
             <div class="col-lg-6 my-auto">
                 <h3>Users</h3>
             </div>
-            <div class="col-lg-6 my-auto">
+            <div class="col-lg-3 my-auto">
                 <button class="btn btn-sm fa fa-plus btn-success float-end" id="btnLoadAddUserModal"> Add User</button>
             </div>
+            <div class="col-lg-3 my-auto">
+            <a href="{{route('export-users-topdf')}}" class="btn btn-sm btn-primary float-end fa fa-file-pdf"> Export to
+                pdf </a>
+
         </div>
+        </div>
+       
         <div class="card-body">
+
             <div class="row">
                 <div class="col-lg-12">
                     @if (count($users) > 0)
@@ -41,7 +48,8 @@ TrailAnalytics|User Panel
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role_name}}</td>
                                     <td>{{ date('D, d/M/y ', strtotime($user->created_at)) }}</td>
-                                    <td><button class="btn btn-sm btn-danger fa fa-trash btnDeleteUser"> Delete</button></td>
+                                    <td><button class="btn btn-sm btn-danger fa fa-trash btnDeleteUser"> Delete</button>
+                                    </td>
 
                                 </tr>
                                 <? $i++ ;?>

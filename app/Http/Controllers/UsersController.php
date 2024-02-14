@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Response;
 use Str;
+use PDF;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -174,6 +175,20 @@ class UsersController extends Controller
         return redirect('/dashboard');
 
     }
+
+     // Generate PDF
+     public function create_PDF() {
+        // retreive all records from db
+        $data['users'] = DB::table('user_details')->get();
+        // $data['users'] = User::all();
+        // share data to view
+        // view()->share('users', $users);
+        $pdf = PDF::loadView('dashboard.users.PDF.users',$data);
+        // PDF::loadView('my-actual-view',compact('data'))->output()
+
+        // download PDF file with download method
+        return $pdf->stream( "users.pdf", array("Attachment" => false));
+      }
 
 
 

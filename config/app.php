@@ -182,6 +182,8 @@ return [
         Yajra\DataTables\ButtonsServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -240,6 +242,8 @@ return [
         'ModelHelper' => App\Classes\ModelHelper::class,
         'GeneralHelper' => App\Classes\GeneralHelper::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
 
     ],
 
