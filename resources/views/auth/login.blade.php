@@ -157,7 +157,7 @@
                                 </label>
                             </div>
                             <!--begin::Link-->
-                            <a href="authentication/layouts/creative/reset-password.html" class="link-primary">Forgot
+                            <a href="#" class="link-primary">Forgot
                                 Password ?</a>
                             <!--end::Link-->
                         </div>
