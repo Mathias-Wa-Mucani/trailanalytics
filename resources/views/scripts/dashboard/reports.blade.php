@@ -7,7 +7,7 @@
             // return alert($(this)[0].id);
             var ActiveUser = $(this)[0].id;
 
-            $('.user-details' + ActiveUser).css({'background': 'rgb(143 239 186)', 'border': '2px solid red'});
+            $('.user-details' + ActiveUser).css({'background': 'rgb(143 239 186)', 'border': '2px solid red', 'border-radius': '15px 15px' });
             $('.clicked-user' ).not($('.user-details' + ActiveUser)).css({'background':'', 'border':''});
 
             // $('.user-details').not($('.user-details' + ActiveUser)).removeClass('active'); //remove active class from all other a tags except clicked one
