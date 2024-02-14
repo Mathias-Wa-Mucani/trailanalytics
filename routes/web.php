@@ -41,6 +41,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  
 Route::get('auth-github', [App\Http\Controllers\UsersController::class, 'auth_github'])->name('auth-github');
 Route::get('auth-github-callback', [App\Http\Controllers\UsersController::class, 'auth_github_callback'])->name('auth-github-callback');
+ 
+Route::get('auth-google', [App\Http\Controllers\UsersController::class, 'auth_google'])->name('auth-google');
+Route::get('auth-google-callback', [App\Http\Controllers\UsersController::class, 'auth_google_callback'])->name('auth-google-callback');
 
 
 Route::group(['middleware' => ['auth', 'verified']], function () {

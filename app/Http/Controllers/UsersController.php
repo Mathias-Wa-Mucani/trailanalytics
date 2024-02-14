@@ -148,6 +148,32 @@ class UsersController extends Controller
         return redirect('/dashboard');
 
     }
+    public function auth_google(Request $request)
+    {
+        return Socialite::driver('google')->redirect();
+
+    }
+    public function auth_google_callback()
+    {
+        // return 'auth callback';
+        $googleUser = Socialite::driver('google')->user();
+        // dd($googleUser);
+        $user = User::updateOrCreate([
+            'email' => $googleUser->email,
+        ], [
+            'name' => $googleUser->name,
+            'email' => $googleUser->email,
+            'avatar' => $googleUser->avatar,
+            'password' => Hash::make(Str::random(24)),
+            // 'github_token' => $githubUser->token,
+            // 'github_refresh_token' => $githubUser->refreshToken,
+        ]);
+
+        Auth::login($user);
+
+        return redirect('/dashboard');
+
+    }
 
 
 

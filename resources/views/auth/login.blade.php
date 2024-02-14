@@ -63,9 +63,9 @@
                         <!--begin::Login options-->
                         <div class="row g-3 mb-9 ">
                             <!--begin::Col-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <!--begin::Google link=-->
-                                <a href="#"
+                                <a href="{{route('auth-google')}}"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                     <img alt="Logo"
                                         src="{{ asset('public/assets/media/svg/brand-logos/google-icon.svg') }}"
@@ -74,26 +74,26 @@
                             </div>
                             <!--end::Col-->
                             <!--begin::Col-->
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <!--begin::Google link=-->
                                 <a href="#"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                     <img alt="Logo"
-                                        src="{{ asset('public/assets/media/svg/brand-logos/apple-black.svg') }}"
+                                        src="{{ asset('public/assets/media/svg/brand-logos/facebook-5.svg') }}"
                                         class="theme-light-show h-15px me-3" />
                                     <img alt="Logo"
-                                        src="{{ asset('public/assets/media/svg/brand-logos/apple-black-dark.svg') }}"
-                                        class="theme-dark-show h-15px me-3" />Apple</a>
+                                        src="{{ asset('public/assets/media/svg/brand-logos/facebook-black-dark.svg') }}"
+                                        class="theme-dark-show h-15px me-3" />Facebook</a>
                                 <!--end::Google link=-->
                             </div>
                             <!--end::Col-->
                             <!--begin::Col-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <!--begin::Github link=-->
                                 <a href="{{ route('auth-github') }}"
                                     class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
                                     <img alt="Logo"
-                                        src="{{ asset('public/assets/media/svg/brand-logos/github.svg') }}"
+                                        src="{{ asset('public/assets/media/svg/brand-logos/github-1.svg') }}"
                                         class="theme-light-show h-15px me-3" />
                                     <img alt="Logo"
                                         src="{{ asset('public/assets/media/svg/brand-logos/github-black-dark.svg') }}"

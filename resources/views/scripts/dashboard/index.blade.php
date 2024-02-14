@@ -91,7 +91,7 @@
                                     "success");
 
                                 setTimeout(function() {
-                                    // location.reload();
+                                    location.reload();
                                     $('#time_in').removeClass('d-none');
                                     $('#time_out').addClass('d-none');
                                 }, 3000)
