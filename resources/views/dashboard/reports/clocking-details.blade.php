@@ -4,7 +4,7 @@
 </div><br><br>
 <div class="table-responsive">
     <input type="hidden" value="{{$clocking_details[0]->user_id}}">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered table-striped">
         <thead>
             <tr>
                 <th>Date</th>

@@ -214,6 +214,17 @@ class UsersController extends Controller
 
     }
 
+    public function get_users(Request $request){
+        $users = DB::table('users')->get();
+
+        return Response()->json(['users'=>$users]);
+    }
+    public function get_user(Request $request){
+        $user = DB::table('users')->where('id', $request->id)->get();
+
+        return Response()->json(['user'=>$user]);
+    }
+
 
 
 }

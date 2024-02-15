@@ -3,51 +3,105 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Api\AuthApiController as AuthService;
-use App\Http\Controllers\EmailController as EmailService;
-use App\Http\Requests\Auth\SignupApiRequest;
-use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Response;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class SignupApiController extends ApiController
 {
-    protected $authService;
-    protected $emailService;
-    protected $userRepository;
 
-    public function __construct(
-        AuthService $authService,
-        EmailService $emailService,
-        UserRepositoryInterface $userRepository
-    ) {
-        // $this->middleware('JWT', ['except' => ['signup','verify_email']]);
-        $this->authService = $authService;
-        $this->emailService = $emailService;
-        $this->userRepository = $userRepository;
-    }
 
-    public function signup(SignupApiRequest $request)
+    public function signup(Request $request)
     {
         // return $request;
         // Get the values from the form
-        $request = @$request->only(['name', 'email', 'district_code', 'position_id', 'password']);
+        // $request = @$request->only([ 'email',  'password']);
 
-        /**
-         * Check if user exists
-         */
-        $exists = $this->userRepository->getUserByEmail($request['email']);
-        if (@$exists) {
-            return $this->errorResponse('EMAIL_EXISTS');
+        // return Response()->json(['res'=> $request]);
+
+        try {
+            //Validated
+            $validateUser = Validator::make(
+                $request->all(),
+                [
+                    'name' => 'required',
+                    'email' => 'required|email|unique:users,email',
+                    'password' => 'required'
+                ]
+            );
+
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User Created Successfully',
+                'token' => $user->createToken("API TOKEN")->plainTextToken
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function login(Request $request)
+    {
+        try {
+            $validateUser = Validator::make(
+                $request->all(),
+                [
+                    'email' => 'required|email',
+                    'password' => 'required'
+                ]
+            );
+
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+            if (!Auth::attempt($request->only(['email', 'password']))) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Email & Password does not match with our record.',
+                ], 401);
+            }
+
+            $user = User::where('email', $request->email)->first();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'User Logged In Successfully',
+                'token' => $user->createToken("API TOKEN")->plainTextToken
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
         }
 
-        /**
-         * Create the user
-         */
-        $request['dcode'] = $request['district_code'];
-        unset($request['district_code']);
-        if ($this->userRepository->create($request)) {
-            return $this->successMessage('User successfully created');
-        }
-        return $this->errorResponse();
     }
 }
