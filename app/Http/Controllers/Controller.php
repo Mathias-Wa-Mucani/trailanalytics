@@ -27,7 +27,7 @@ class Controller extends BaseController
         if (Auth::check()) {
             $position_id = Auth::user()->role_id;
             // $data['mainmenus'] = DB::table('setup_menu_main')->whereIn('id', array(SELECT menu_id FROM view_user_roles_details WHERE id =  "' . Auth::user()->position_id . '")')->where('flag', true)->orderBy('orders', 'ASC')->get();
-            $data['mainmenus'] = DB::table('setup_menu_main')->whereIn('id', function ($query) {
+            /*$data['mainmenus'] = DB::table('setup_menu_main')->whereIn('id', function ($query) {
                 $query->select('menu_id')
                     ->from('view_user_roles_details')
                     ->whereRaw('view_user_roles_details.id', Auth::user()->role_id);
@@ -37,10 +37,11 @@ class Controller extends BaseController
                 $query->select('submenu_id')
                     ->from('view_user_roles_details')
                     ->whereRaw('view_user_roles_details.id', Auth::user()->role_id);
-            })->where('flag', true)->orderBy('orders', 'ASC')->get();
+            })->where('flag', true)->orderBy('orders', 'ASC')->get();*/
             // return print_r( $data['submenus']);
-
-            /*
+            // return print_r( DB::getQueryLog());
+            // dd(DB::getQueryLog());
+           
             $data['mainmenus'] = DB::select(
                 '
                 SELECT * FROM setup_menu_main WHERE id IN (SELECT menu_id FROM view_user_roles_details WHERE id = "' . $position_id . '") AND flag = TRUE ORDER BY orders ASC               
@@ -50,7 +51,7 @@ class Controller extends BaseController
                 "
                 SELECT * FROM setup_menu_submenu WHERE id IN (SELECT submenu_id FROM view_user_roles_details WHERE id = '" . $position_id . "') AND flag = TRUE ORDER BY orders ASC               
                 "
-            );*/
+            );
 
             // return print_r( $data);
 

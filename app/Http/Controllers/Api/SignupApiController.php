@@ -45,7 +45,8 @@ class SignupApiController extends ApiController
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'role_id' => 2
             ]);
 
             return response()->json([
