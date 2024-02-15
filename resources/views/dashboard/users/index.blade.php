@@ -32,7 +32,7 @@ TrailAnalytics|User Panel
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="bg-secondary">
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>

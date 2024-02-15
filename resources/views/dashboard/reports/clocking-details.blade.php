@@ -6,7 +6,7 @@
     <input type="hidden" value="{{$clocking_details[0]->user_id}}">
     <table class="table table-hover table-bordered table-striped">
         <thead>
-            <tr>
+            <tr class="bg-secondary">
                 <th>Date</th>
                 <th>Time In</th>
                 <th>Time Out</th>
