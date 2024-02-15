@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use GuzzleHttp\Client;
 
 class Controller extends BaseController
 {
@@ -57,5 +58,28 @@ class Controller extends BaseController
 
 
         return view($page, $data);
+    }
+
+    public function api_login(){
+        try {
+            $client = new Client();
+            $login_request = $client->request('POST', 'https://trailanalytics.dbcservicesug.com/api/auth/login', [
+                'form_params' => [
+                    'email' => "info@trailanalytics.com",
+                    'password' => 'admin',
+                ]
+            ]);
+
+            $login_response = json_decode($login_request->getBody()->getContents(), true);
+            $token = $login_response['token'];
+
+            return $token;
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 }

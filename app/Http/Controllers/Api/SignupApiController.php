@@ -62,7 +62,7 @@ class SignupApiController extends ApiController
         }
     }
 
-    public function login(Request $request)
+    public function login( Request $request )
     {
         try {
             $validateUser = Validator::make(

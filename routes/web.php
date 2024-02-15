@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('export-users-topdf', [UsersController::class, 'create_PDF'])->name('export-users-topdf');
         Route::get('export-users-tocsv', [UsersController::class, 'create_CSV'])->name('export-users-tocsv');
         Route::get('export-user-report-pdf/{user_id}', [ReportController::class, 'create_PDF'])->name('export-user-report-pdf');
+        Route::get('test-api', [DashboardController::class, 'test_api'])->name('test-api');
 
         
     });
